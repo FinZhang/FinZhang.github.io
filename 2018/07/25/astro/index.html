@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Fin zhang">
     
@@ -53,11 +53,11 @@
 
             }
         }
-    </style>
+    </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 <body>
-<div class="cube-body">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="cube-body">
     <nav id="cube-top-memu" class="cube-menu">
     <ul class="cube-menu-collapse">
         
@@ -197,54 +197,35 @@
 <p>赤纬(declination) $\delta$ 表示恒星与地心连线与赤道面夹角的大小。</p>
 <p>赤经(right ascension) $\alpha$ 表示连线在赤道面投影与春分点(vernal equinox, $\Upsilon$)的夹角。这个角度用小时表示，$360^\circ = 24h$. 一小时对应$15^\circ$. </p>
 <h5 id="2-坐标系进动"><a href="#2-坐标系进动" class="headerlink" title="2.坐标系进动"></a>2.坐标系进动</h5><p>地球自转进动会影响星体在赤道天球坐标系下的坐标，需要约定一时间来给出统一的赤经和赤纬。如J2000.0将格林尼治时间2000年1月1日0点定为标准时，J指的是Julian calendar. 相对于这一标准时间时的赤经和赤纬，之后某时刻的坐标由下式给出</p>
-<p>$$\Delta\alpha =M+N\sin\alpha \tan\delta$$</p>
-<p>$$\Delta \delta=N\cos\alpha$$</p>
-<p>式中M,N分别为</p>
-<p>$$M=1^\circ.2812323T+0^\circ.0003879T^2+0^\circ.0000101T^3​$$</p>
-<p>$$N=0^\circ.5567530T-0^\circ.0001185T^2-0^\circ.0000116T^3$$</p>
-<p>$$T=(t-2000.0)/100$$</p>
-<p>t是当前的日期，化成年为单位。</p>
+<script type="math/tex; mode=display">\Delta\alpha =M+N\sin\alpha \tan\delta</script><script type="math/tex; mode=display">\Delta \delta=N\cos\alpha</script><p>式中M,N分别为</p>
+<script type="math/tex; mode=display">M=1^\circ.2812323T+0^\circ.0003879T^2+0^\circ.0000101T^3​</script><script type="math/tex; mode=display">N=0^\circ.5567530T-0^\circ.0001185T^2-0^\circ.0000116T^3</script><script type="math/tex; mode=display">T=(t-2000.0)/100</script><p>t是当前的日期，化成年为单位。</p>
 <h4 id="chapter-2"><a href="#chapter-2" class="headerlink" title="chapter 2"></a>chapter 2</h4><h5 id="威利定理-virial-theorem"><a href="#威利定理-virial-theorem" class="headerlink" title="威利定理(virial theorem)"></a>威利定理(virial theorem)</h5><p>独立且处于平衡的引力作用体系，其总能量始终是时间平均势能的一半（势能和体系能量都是负的）。</p>
 <h4 id="chapter-3"><a href="#chapter-3" class="headerlink" title="chapter 3"></a>chapter 3</h4><h5 id="1-星等（bolometric-magnitudes）"><a href="#1-星等（bolometric-magnitudes）" class="headerlink" title="1.星等（bolometric magnitudes）"></a>1.星等（bolometric magnitudes）</h5><p>视星等：比例关系需要基准定标（如设夜空最亮星体星等为1），其他星体星等由下式给定</p>
-<p>$$m_1-m_2=-2.5\log_{10}({F_1\over F_2})$$</p>
-<p>流量$F$和距离二次反比，距离变为两倍则流量降至四倍。</p>
+<script type="math/tex; mode=display">m_1-m_2=-2.5\log_{10}({F_1\over F_2})</script><p>流量$F$和距离二次反比，距离变为两倍则流量降至四倍。</p>
 <p>绝对星等：假定星体均位于10pc处的视星等。</p>
 <p>距离模数(distance module)：视星等和绝对星等之差，显然有10pc内的模数为正，之外为负</p>
-<p>$$m-M=5\log_{10}({d\over 10pc})$$</p>
-<h5 id="2-光压"><a href="#2-光压" class="headerlink" title="2.光压"></a>2.光压</h5><p>真空中电磁波能流密度由Poynting vector决定，其平均值$\langle S\rangle ={1\over 2\mu_0}E_0B_0$，吸收与反射的光压表达式为</p>
-<p>$$F_{ab}={\langle S\rangle A\over c}\cos\theta,~F_{re}={2\langle S\rangle A\over c}\cos^2\theta$$</p>
-<h5 id="3-单色光度-monochromatic-luminosity"><a href="#3-单色光度-monochromatic-luminosity" class="headerlink" title="3.单色光度(monochromatic luminosity)"></a>3.单色光度(monochromatic luminosity)</h5><p><img src="http://wx2.sinaimg.cn/large/005Xteq2gy1ft3jxsmg8xj30dg09aweu.jpg" alt=""></p>
+<script type="math/tex; mode=display">m-M=5\log_{10}({d\over 10pc})</script><h5 id="2-光压"><a href="#2-光压" class="headerlink" title="2.光压"></a>2.光压</h5><p>真空中电磁波能流密度由Poynting vector决定，其平均值$\langle S\rangle ={1\over 2\mu_0}E_0B_0$，吸收与反射的光压表达式为</p>
+<script type="math/tex; mode=display">F_{ab}={\langle S\rangle A\over c}\cos\theta,~F_{re}={2\langle S\rangle A\over c}\cos^2\theta</script><h5 id="3-单色光度-monochromatic-luminosity"><a href="#3-单色光度-monochromatic-luminosity" class="headerlink" title="3.单色光度(monochromatic luminosity)"></a>3.单色光度(monochromatic luminosity)</h5><p><img src="http://wx2.sinaimg.cn/large/005Xteq2gy1ft3jxsmg8xj30dg09aweu.jpg" alt=""></p>
 <p>从$dA$面积黑体上向单位立体角$d\Omega$发射的能量强度为$B_\lambda d\lambda dA\cos\theta\sin\theta d\theta d\phi$，积分积掉面积和立体角（设球形天体有面积积分为$4\pi R^2$)</p>
-<p>$$L_\nu d\lambda =4\pi^2 R^2 B_\lambda d\lambda={8\pi^2R^2hc^2/\lambda^5\over e^{hc/\lambda kT}-1}d\lambda$$</p>
-<p>这被称为单色光度，其对全波段积分结果应与斯特藩定理给出结果相同</p>
-<p>$$\int^\infty_0  B_\lambda(T)d\lambda={\sigma T^4\over \pi}$$</p>
-<p>单色光度除以包络面积即为单色流量（monochromatic luminosity）</p>
+<script type="math/tex; mode=display">L_\nu d\lambda =4\pi^2 R^2 B_\lambda d\lambda={8\pi^2R^2hc^2/\lambda^5\over e^{hc/\lambda kT}-1}d\lambda</script><p>这被称为单色光度，其对全波段积分结果应与斯特藩定理给出结果相同</p>
+<script type="math/tex; mode=display">\int^\infty_0  B_\lambda(T)d\lambda={\sigma T^4\over \pi}</script><p>单色光度除以包络面积即为单色流量（monochromatic luminosity）</p>
 <h5 id="4-比色指数-color-index"><a href="#4-比色指数-color-index" class="headerlink" title="4.比色指数(color index)"></a>4.比色指数(color index)</h5><p>UBV：U=ultraviolet，中心365nm，有效带宽68nm. B=blue，中心440nm， 有效带宽98nm. V=visual，中心550nm，有效带宽89nm.B-V和U-B是两个衡量星体“颜色”的重要指标，越小说明越“蓝”</p>
 <p>热辐射修正(bolometric correction)：星等减V段星等</p>
-<p>$$BC=m_{bol}-V=M_{bol}-M_V$$</p>
-<p>sensitivity function $S(\lambda)$：接收到特定波长光的比例，特定星体某个波段的星等有</p>
-<p>$$U=-2.5\log_{10}(\int^\infty_0F_\lambda S_U d\lambda)+C_U$$</p>
-<p>常数可根据情况取，例如取值令Vega($\alpha$ Lyrae, 织女一)的各个波段星等为0。注意此时$C_U,C_B,C_V$不同，三波段光流量也不同，虽然三波段的星等均为0.</p>
+<script type="math/tex; mode=display">BC=m_{bol}-V=M_{bol}-M_V</script><p>sensitivity function $S(\lambda)$：接收到特定波长光的比例，特定星体某个波段的星等有</p>
+<script type="math/tex; mode=display">U=-2.5\log_{10}(\int^\infty_0F_\lambda S_U d\lambda)+C_U</script><p>常数可根据情况取，例如取值令Vega($\alpha$ Lyrae, 织女一)的各个波段星等为0。注意此时$C_U,C_B,C_V$不同，三波段光流量也不同，虽然三波段的星等均为0.</p>
 <h5 id="5-颜色-颜色图-color-color-diagram"><a href="#5-颜色-颜色图-color-color-diagram" class="headerlink" title="5.颜色-颜色图(color-color diagram)"></a>5.颜色-颜色图(color-color diagram)</h5><p>由于星体并非真正的黑体，所以在图上的位置会偏离黑体线</p>
 <p><img src="http://wx4.sinaimg.cn/large/005Xteq2gy1ft3m32x1l0j30di0adaaf.jpg" alt=""></p>
 <h4 id="chapter-4"><a href="#chapter-4" class="headerlink" title="chapter 4"></a>chapter 4</h4><h5 id="1-SR红移"><a href="#1-SR红移" class="headerlink" title="1.SR红移"></a>1.SR红移</h5><p><img src="http://wx3.sinaimg.cn/large/005Xteq2gy1ft4o4uv39hj30c3060aa8.jpg" alt=""></p>
-<p>$$v_{obs}=v_{rest}{\sqrt{1-u^2/c^2}\over 1+v_r c}$$</p>
-<p>$$v_{obs}=v_{rest}\sqrt{1-v_r/c\over 1+v_r/c}$$</p>
-<p>相对速度在远离时取正</p>
+<script type="math/tex; mode=display">v_{obs}=v_{rest}{\sqrt{1-u^2/c^2}\over 1+v_r c}</script><script type="math/tex; mode=display">v_{obs}=v_{rest}\sqrt{1-v_r/c\over 1+v_r/c}</script><p>相对速度在远离时取正</p>
 <p>红移参数$z$</p>
-<p>$$z={\Delta\lambda\over\lambda_{rest}}=\sqrt{1+v_r/c\over 1-v_r/c}-1 \approx v_r/c$$</p>
-<p>$$z+1={\Delta t_{obs}\over\Delta t_{rest}}$$</p>
-<p>上式说明观测到的事件间隔与事件发生地静止系中的间隔有$z+1$倍差。</p>
+<script type="math/tex; mode=display">z={\Delta\lambda\over\lambda_{rest}}=\sqrt{1+v_r/c\over 1-v_r/c}-1 \approx v_r/c</script><script type="math/tex; mode=display">z+1={\Delta t_{obs}\over\Delta t_{rest}}</script><p>上式说明观测到的事件间隔与事件发生地静止系中的间隔有$z+1$倍差。</p>
 <h5 id="2-同步辐射-synchrotron-radiation-与前灯效应-headlight-effect"><a href="#2-同步辐射-synchrotron-radiation-与前灯效应-headlight-effect" class="headerlink" title="2.同步辐射 (synchrotron radiation) 与前灯效应 (headlight effect)"></a>2.同步辐射 (synchrotron radiation) 与前灯效应 (headlight effect)</h5><p>相对论速度电子绕磁场线运动，发出的强线偏振辐射因前灯效应聚集在朝运动方向的圆锥中。</p>
 <h4 id="chapter-5"><a href="#chapter-5" class="headerlink" title="chapter 5"></a>chapter 5</h4><h5 id="Kirchhoff定律"><a href="#Kirchhoff定律" class="headerlink" title="Kirchhoff定律"></a>Kirchhoff定律</h5><p>​    i. 热而致密 (hot and dense) 的气体或热固体发射连续谱(continuous spectrum)，无暗线。</p>
 <p>​    ii.热而稀疏(diffuse)的气体发射亮光谱线(emission lines).</p>
 <p>​    iii.在连续谱发射源前阻挡的冷而稀疏的气体会在连续谱上留下吸收线(absorption lines).</p>
 <h4 id="chapter-6"><a href="#chapter-6" class="headerlink" title="chapter 6"></a>chapter 6</h4><h5 id="1-Rayleigh判据"><a href="#1-Rayleigh判据" class="headerlink" title="1.Rayleigh判据"></a>1.Rayleigh判据</h5><p>对于直径$D$的孔径，其最小角分辨率为</p>
-<p>$$\theta_{min}=1.22{\lambda\over D}$$</p>
-<h5 id="2-illumination-J-与-focal-ratio-F"><a href="#2-illumination-J-与-focal-ratio-F" class="headerlink" title="2.illumination $J$ 与 focal ratio $F$"></a>2.illumination $J$ 与 focal ratio $F$</h5><p>$$F=f/D,~J\propto 1/F^2$$</p>
-<p>$J$用于描述汇聚望远镜汇聚光的能力，由1,2可以看出望远镜口径加大能同时提高分辨率和亮度。</p>
-<h5 id="3-jansky-Jy"><a href="#3-jansky-Jy" class="headerlink" title="3.jansky(Jy)"></a>3.jansky(Jy)</h5><p>$$1Jy=10^{-26}Wm^{-2}Hz^{-1}$$</p>
-<p>常规射电源的强度，另有$mJy$</p>
+<script type="math/tex; mode=display">\theta_{min}=1.22{\lambda\over D}</script><h5 id="2-illumination-J-与-focal-ratio-F"><a href="#2-illumination-J-与-focal-ratio-F" class="headerlink" title="2.illumination $J$ 与 focal ratio $F$"></a>2.illumination $J$ 与 focal ratio $F$</h5><script type="math/tex; mode=display">F=f/D,~J\propto 1/F^2</script><p>$J$用于描述汇聚望远镜汇聚光的能力，由1,2可以看出望远镜口径加大能同时提高分辨率和亮度。</p>
+<h5 id="3-jansky-Jy"><a href="#3-jansky-Jy" class="headerlink" title="3.jansky(Jy)"></a>3.jansky(Jy)</h5><script type="math/tex; mode=display">1Jy=10^{-26}Wm^{-2}Hz^{-1}</script><p>常规射电源的强度，另有$mJy$</p>
 <h4 id="chapter-7"><a href="#chapter-7" class="headerlink" title="chapter 7"></a>chapter 7</h4><h5 id="1-双星系统分类"><a href="#1-双星系统分类" class="headerlink" title="1.双星系统分类"></a>1.双星系统分类</h5><p>Optical double：天球方位相同，两者不处在一个引力系统中。</p>
 <p>Visual binary：双星均能单独观测。</p>
 <p>Astrometric binary：其中一颗比另一颗亮的多导致暗星不可见，通过亮星的振动轨迹可推测暗星信息。</p>
@@ -260,10 +241,8 @@
 <h5 id="2-光谱特征"><a href="#2-光谱特征" class="headerlink" title="2.光谱特征"></a>2.光谱特征</h5><p>从O到A氢吸收线逐渐加强，随后减弱。late-type恒星因金属元素谱线光谱十分复杂。</p>
 <p><img src="http://wx3.sinaimg.cn/large/005Xteq2gy1ft7224f823j30j30m8ad7.jpg" alt=""></p>
 <p>谱线的分布取决于恒星大气中电子原本处于哪些轨道中，将利用含简并的玻尔兹曼分布</p>
-<p>$${N(E_b)\over N(E_a)}={g_b e^{-E_b/kT}\over g_a e^{-Ea/kT}}={g_b\over g_a}e^{-(E_b-E_a)/kT}$$</p>
-<p>上式描述不同激发态电子数关系，另有Saha方程描述不同电离态(ionization stage)电子数关系</p>
-<p>$${N_{i+1}\over N_{i}}={2Z_{i+1}\over n_e Z_i}({2\pi m_e kT\over h^2})^{3/2}e^{-\chi_i/kT}$$</p>
-<p>其中$i$下标表示特定电离态，越大电离程度越高，$\chi_i$表示从$i$电离态到$i+1$电离态需要的电离能，$Z$为特定电离态的配分函数 (partition function) $Z=\sum_{j=1}^\infty g_j e^{-(E_j-E_1)/k T}$，能量越高的态权重越低。注意Saha方程中自由电子密度在分母项，密度越高高电离态的离子就越少，因为他们越容易找到电子结合。有时也会使用自由电子气的状态方程$P_e=n_e k T$改写上式。</p>
+<script type="math/tex; mode=display">{N(E_b)\over N(E_a)}={g_b e^{-E_b/kT}\over g_a e^{-Ea/kT}}={g_b\over g_a}e^{-(E_b-E_a)/kT}</script><p>上式描述不同激发态电子数关系，另有Saha方程描述不同电离态(ionization stage)电子数关系</p>
+<script type="math/tex; mode=display">{N_{i+1}\over N_{i}}={2Z_{i+1}\over n_e Z_i}({2\pi m_e kT\over h^2})^{3/2}e^{-\chi_i/kT}</script><p>其中$i$下标表示特定电离态，越大电离程度越高，$\chi_i$表示从$i$电离态到$i+1$电离态需要的电离能，$Z$为特定电离态的配分函数 (partition function) $Z=\sum_{j=1}^\infty g_j e^{-(E_j-E_1)/k T}$，能量越高的态权重越低。注意Saha方程中自由电子密度在分母项，密度越高高电离态的离子就越少，因为他们越容易找到电子结合。有时也会使用自由电子气的状态方程$P_e=n_e k T$改写上式。</p>
 <p>Saha方程仅能用于热平衡系统，且气体密度不能太大。</p>
 <h5 id="3-赫-罗图-Hertzsprung-Russell-Diagram-与Morgan-Keenan-Luminosity-Classes"><a href="#3-赫-罗图-Hertzsprung-Russell-Diagram-与Morgan-Keenan-Luminosity-Classes" class="headerlink" title="3.赫-罗图(Hertzsprung-Russell Diagram)与Morgan-Keenan Luminosity Classes"></a>3.赫-罗图(Hertzsprung-Russell Diagram)与Morgan-Keenan Luminosity Classes</h5><p><img src="http://wx1.sinaimg.cn/mw690/005Xteq2gy1ft89j6c0s8j30d20ao0th.jpg" alt=""></p>
 <p>MK分类在原来的基础上额外考虑了谱线宽度，一般来说谱线越窄的恒星越亮，因为它们的大气更稀薄，原子间更少发生碰撞，对原子轨道的干扰就越小，那么在轨道之间跃迁的能量误差就会越小。利用MK分类可以定位恒星在赫罗图上的位置，随后根据绝对星等和视星等的差就可推算距离。这一方法被称为光谱视差(spectroscopic parallax)</p>
@@ -285,29 +264,21 @@
 <p>​    Electron scattering, Thomson scattering (自由电子) /Compton scattering (loosely bounded electron, 且波长远小于原子尺寸)/Rayleigh scattering (波长远大于原子尺寸)过程。由于电子截面很小，此项$\kappa_{es}$只在极高温、自由电子密度很大的情况下起主导作用，此时包含电子bound state的项因为几乎完全电离而消失。Rayleigh scattering 截面正比于$1/\lambda^4$，在大部分大气中都能被忽略，但在超巨星extended envelope的UV波段和冷主序星上较为重要。</p>
 <p><strong>Balmer jump</strong>: 指介质吸收了大量能把n=2氢电离的辐射导致在短波段的流量下降，由于这一下降程度取决于处于n=2的氢比例，间接与温度相关，则可以利用测量Balmer jump的程度来测定温度。</p>
 <p><strong>Rosseland Mean Opacity</strong>: 根据黑体谱随温度变化幅度做权重函数计算平均opacity</p>
-<p>$${1\over\bar{\kappa}}={\int^\infty_0 {1\over\kappa_\nu}{\partial B_\nu (T)\over \partial T}d\nu\over\int^\infty_0{\partial B_\nu (T)\over \partial T}d\nu}$$</p>
-<p><strong>Kramers opacity law</strong>: 即$\bar{\kappa}=\kappa_0 \rho/T^{3.5}$, 出现于bf和ff过程中。</p>
+<script type="math/tex; mode=display">{1\over\bar{\kappa}}={\int^\infty_0 {1\over\kappa_\nu}{\partial B_\nu (T)\over \partial T}d\nu\over\int^\infty_0{\partial B_\nu (T)\over \partial T}d\nu}</script><p><strong>Kramers opacity law</strong>: 即$\bar{\kappa}=\kappa_0 \rho/T^{3.5}$, 出现于bf和ff过程中。</p>
 <p><strong>F0后恒星的连续性吸收主要来自于$H^-$的光致电离，B和A型主要是氢原子和free-free过程，O型主要是电子散射。</strong></p>
 <h5 id="3-辐射转移方程"><a href="#3-辐射转移方程" class="headerlink" title="3.辐射转移方程"></a>3.辐射转移方程</h5><p>emission coefficient: $dI_\lambda =j_\lambda\rho ds$, 单位是$ms^{-3}sr^{-1}$.</p>
 <p>transfer equation: </p>
-<p>$$-{1\over\kappa_\lambda \rho}{dI_\lambda\over ds}=I_\lambda-S_\lambda~\to~{dI_\lambda\over d\tau_\lambda}=I_\lambda-S_\lambda$$</p>
-<p>其中 $S_\lambda\equiv j_\lambda/\kappa_\lambda$ 被称为 source function，显然当辐射intensity大于source function时辐射就会减弱，反之加强。如果考虑局域平衡，$I_\lambda$ 应趋于和 $S_\lambda$ 相等，虽然source function的变化速度可能很快导致平衡态难以达到。</p>
+<script type="math/tex; mode=display">-{1\over\kappa_\lambda \rho}{dI_\lambda\over ds}=I_\lambda-S_\lambda~\to~{dI_\lambda\over d\tau_\lambda}=I_\lambda-S_\lambda</script><p>其中 $S_\lambda\equiv j_\lambda/\kappa_\lambda$ 被称为 source function，显然当辐射intensity大于source function时辐射就会减弱，反之加强。如果考虑局域平衡，$I_\lambda$ 应趋于和 $S_\lambda$ 相等，虽然source function的变化速度可能很快导致平衡态难以达到。</p>
 <p>​    LTE条件下，$S_\lambda=B_\lambda$, TE条件下追加 $I_\lambda=B_\lambda$.</p>
 <p><strong>plane-parallel grey atmosphere</strong>: 设$\kappa=\bar{\kappa}=constant$与光波长无关，则$\tau$也与波长无关（灰大气）。具体推导参见Textbook P290-296</p>
-<p>$${dF_{rad}\over d\tau_\nu}=4\pi(\langle I\rangle-S)$$ </p>
-<p>$${dP_{rad}\over d\tau_\nu}={1\over c}F_{rad}~\to~{dP_{rad}\over dr}=-{\bar{\kappa}\rho\over c}F_{rad}$$</p>
-<p>平面平行大气中Flux应恒定，则$\langle I\rangle=S$.</p>
+<script type="math/tex; mode=display">{dF_{rad}\over d\tau_\nu}=4\pi(\langle I\rangle-S)</script><script type="math/tex; mode=display">{dP_{rad}\over d\tau_\nu}={1\over c}F_{rad}~\to~{dP_{rad}\over dr}=-{\bar{\kappa}\rho\over c}F_{rad}</script><p>平面平行大气中Flux应恒定，则$\langle I\rangle=S$.</p>
 <p>​    根据Eddington approximation (向外的intensity为恒定值$I_{out}$, 向内的intensity为恒定值$I_{in}$), 能够得到温度随$\tau$变化形式:</p>
-<p>$$T^4={3\over 4}T_e^4(\tau+{2\over 3})$$</p>
-<p>此式说明等效温度大约是$\tau=2/3$处的实际温度，物理上可以理解为是观测到的光子源头的平均深度。</p>
+<script type="math/tex; mode=display">T^4={3\over 4}T_e^4(\tau+{2\over 3})</script><p>此式说明等效温度大约是$\tau=2/3$处的实际温度，物理上可以理解为是观测到的光子源头的平均深度。</p>
 <p><strong>Limb Darkening</strong>：直接积分transfer equation可以得到</p>
-<p>$$I_\lambda(0)=I_{\lambda,0}e^{-\tau_\lambda,0}-\int^0_{\tau_{\lambda,0}}S_\lambda e^{-\tau_\lambda}d\tau_\lambda$$</p>
-<p>此式的物理意义非常明显。注意第二项也是正的，因为$d\tau_\lambda$与从发射点出发的路径$ds$符号相反</p>
+<script type="math/tex; mode=display">I_\lambda(0)=I_{\lambda,0}e^{-\tau_\lambda,0}-\int^0_{\tau_{\lambda,0}}S_\lambda e^{-\tau_\lambda}d\tau_\lambda</script><p>此式的物理意义非常明显。注意第二项也是正的，因为$d\tau_\lambda$与从发射点出发的路径$ds$符号相反</p>
 <p>利用平面平行(<strong>非灰</strong>)大气假设，将辐射出发点设为无限远处并令$S_\nu=a+b\tau_\nu$ 得到 intensity 对角度的依赖关系</p>
-<p>$$I_\lambda(0)=a_\lambda+b_\lambda\cos\theta$$</p>
-<p>加入灰大气假设和Eddington approximation，利用$S=\langle I\rangle={3\sigma\over 4\pi}T_e^4 (\tau+{2\over 3})$能得到两个常数的取值，最后有</p>
-<p>$${I(\theta)\over I(\theta=0)}={2\over 5}+{3\over 5}\cos\theta$$</p>
-<p>对太阳的观测证实这一结果的合理性 (an incredible fit!)</p>
+<script type="math/tex; mode=display">I_\lambda(0)=a_\lambda+b_\lambda\cos\theta</script><p>加入灰大气假设和Eddington approximation，利用$S=\langle I\rangle={3\sigma\over 4\pi}T_e^4 (\tau+{2\over 3})$能得到两个常数的取值，最后有</p>
+<script type="math/tex; mode=display">{I(\theta)\over I(\theta=0)}={2\over 5}+{3\over 5}\cos\theta</script><p>对太阳的观测证实这一结果的合理性 (an incredible fit!)</p>
 <p><img src="http://wx1.sinaimg.cn/mw690/005Xteq2gy1ftdxh9qxlpj30dc0a1q39.jpg" alt=""></p>
 <h5 id="4-谱线轮廓"><a href="#4-谱线轮廓" class="headerlink" title="4.谱线轮廓"></a>4.谱线轮廓</h5><p>equivalent width: 将真实谱流量除以平滑的连续谱流量做比例图，对谱线凹陷处的区域进行积分，得到的结果有距离量纲，其可以等效为高度为1(平滑连续谱的高度)的一个波长宽度，称为equivalent width.</p>
 <p><img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1ftdzd7xy9uj30cj0a13yn.jpg" alt=""></p>
@@ -320,8 +291,7 @@
 <p>f-values/oscillator strengths: $f$定义为一个特定元素原子能为特定的跃迁（也就是特定的吸收线）提供的有效电子的数量（显然这一数量是小于1的，除非该种原子只能发生一种跃迁），$fN$代表单位面积上能够产生特定吸收线的原子数量（例如$f=0.1,~N=10 m^{-2}$, 则每平方米能产生此谱线的原子等效来看仅有一个）</p>
 <p>Curve of Growth: equivalent width 与 $fN_a$ 的关系，当两者取对数时，从小到大$W$分别正比于$N_a,\sqrt{\ln N_a},\sqrt{N_a}$. 生长曲线的重要应用是通过若干条吸收原子是同一初态的谱线的等效宽度，求特定元素原子密度，参见P308-309的重要例子。同样也可以用不同初态的数据得到两个态之间的比例，然后代回Saha或者Boltzmann方程求温度、电子气压强（如果另一个已知）.</p>
 <h4 id="chapter-10-P321"><a href="#chapter-10-P321" class="headerlink" title="chapter 10 P321"></a>chapter 10 P321</h4><h5 id="1-太阳内部结构"><a href="#1-太阳内部结构" class="headerlink" title="1.太阳内部结构"></a>1.太阳内部结构</h5><p>标准G2主序星，半径和亮度都随寿命在逐渐加大。太阳内层为辐射，外层对流。比太阳稍重的恒星内核也有对流，对流发生条件称为superadiabatic, 为</p>
-<p>$$|{dT\over dr} |<em>{act}&gt;|{dT\over dr}|</em>{act}~\to~{d\ln P\over d\ln T}&lt;2.5$$</p>
-<p>箭头使用了单原子理想气体假设。</p>
+<script type="math/tex; mode=display">|{dT\over dr} |_{act}>|{dT\over dr}|_{act}~\to~{d\ln P\over d\ln T}<2.5</script><p>箭头使用了单原子理想气体假设。</p>
 <p>温度梯度与opacity成正比，梯度很大时对流比辐射效率更高。</p>
 <p><img src="http://wx1.sinaimg.cn/mw690/005Xteq2gy1fthmdbbcdmj30aw094q3m.jpg" alt=""></p>
 <h5 id="2-太阳中微子问题"><a href="#2-太阳中微子问题" class="headerlink" title="2.太阳中微子问题"></a>2.太阳中微子问题</h5><p>故事见P328. $SNU=\mathrm{solar~neutrino~unit}\equiv 10^{-36} \mathrm{reactions~per~target~atom~per~second}$. 由于中微子在三种flavors之间震荡，探测到的来自太阳核反应的电子中微子数量比预测中小。这说明中微子有质量。</p>
@@ -343,11 +313,9 @@
 <p>​    光球层辐射是峰在可见光段的黑体谱，其两头辐射很小，corona的发射线包括长波部分（来自free-free transition）以及更多的紫外部分（极高离子化和高能自由电子）</p>
 <p><strong>Coronal holes and solar wind</strong>: 冕洞指的是日冕上相对冷且暗的部分，其对应的是太阳磁场线开放的部分（延伸到无穷远处的磁场线），该区域带电粒子绕磁场线螺旋向外发射形成 (快速，fast) solar wind. 反之热且亮的区域是磁场线闭合的部分，此区域的corona streamer是(慢速，slow) solar wind的来源。太阳风被拘束在 Van Allen radiation belt内与地球磁场两级附近原子碰撞是极光的成因。</p>
 <p>The Parker wind model: 假设太阳风内部等温、并在各处流体静力学平衡，能够估计其压强分布</p>
-<p>$$P(r)=P_0 e^{-\lambda(1-r_0/r)},~\lambda\equiv {GM_\odot m_p\over 2kTr_0},~P_0=2n_0kT$$</p>
-<p>注意这说明在无穷远处太阳风的压强也不会变成0（比星际间物质压强大得多），根据观测太阳风内部温度随距离降低的速度很慢。</p>
+<script type="math/tex; mode=display">P(r)=P_0 e^{-\lambda(1-r_0/r)},~\lambda\equiv {GM_\odot m_p\over 2kTr_0},~P_0=2n_0kT</script><p>注意这说明在无穷远处太阳风的压强也不会变成0（比星际间物质压强大得多），根据观测太阳风内部温度随距离降低的速度很慢。</p>
 <p>太阳大气的Hydrodynamic: 有基本方程</p>
-<p>$$\rho v {dv\over dr}=-{dP\over dr}-{GM_r\rho\over r^2},~{d(\rho v r^2)\over dr}=0$$</p>
-<p>convection层顶部生成的热气流波的能流形式 ${1\over 2}\rho v_w^2 v_s$, 其中$v_w$是粒子被convection层从其平衡位置打出时的振动振幅，$v_s=\sqrt{\gamma P/\rho}=\sqrt{\gamma  kT\over \mu m_H}$ 为声速。在通过光球层时密度快速下降，而声速基本不变。若通过光球层过程能流基本无损失 (?)，当其到达色球层时$v_w$会变得很大并超过声速，这被称为 shock wave (类似超音速飞机背后的音爆). 当这种波通过气体时会迅速通过碰撞加热气体使之电离，波本身则耗尽能量迅速消失。<strong>这是色球层以及以上部分的热源之一</strong>。</p>
+<script type="math/tex; mode=display">\rho v {dv\over dr}=-{dP\over dr}-{GM_r\rho\over r^2},~{d(\rho v r^2)\over dr}=0</script><p>convection层顶部生成的热气流波的能流形式 ${1\over 2}\rho v_w^2 v_s$, 其中$v_w$是粒子被convection层从其平衡位置打出时的振动振幅，$v_s=\sqrt{\gamma P/\rho}=\sqrt{\gamma  kT\over \mu m_H}$ 为声速。在通过光球层时密度快速下降，而声速基本不变。若通过光球层过程能流基本无损失 (?)，当其到达色球层时$v_w$会变得很大并超过声速，这被称为 shock wave (类似超音速飞机背后的音爆). 当这种波通过气体时会迅速通过碰撞加热气体使之电离，波本身则耗尽能量迅速消失。<strong>这是色球层以及以上部分的热源之一</strong>。</p>
 <p><strong>Alfven wave</strong> and Magnetohydrodynamics (MHD) : 另一种给日冕加热的方式，当垂直磁场方向压缩plasma的时候，磁场线也会随之压缩，即磁场能量密度变大。这会导致压缩面两边产生<strong>磁压强差</strong>，其大小正好与磁场能量密度相同$P_m={B_m\over 2\mu_0}$. 这种压缩会造成沿磁场方向传播的波，称为Alfven wave. 类似于垂直拉开弦导致沿弦传播的振动。</p>
 <p>太阳的磁场在转动时需要拖动太阳风一起旋转（太阳风需要沿着开放磁场线向外发射），所以太阳风在带走太阳的角动量。注意虽然光球层处太阳的自转与纬度有关，但其磁场并没有这一性质。</p>
 <h5 id="4-太阳周期性活动"><a href="#4-太阳周期性活动" class="headerlink" title="4.太阳周期性活动"></a>4.太阳周期性活动</h5><p><strong>sunspot</strong> (太阳黑子): 数量以11年为周期，在每个周期内黑子从较高纬度逐渐向赤道靠拢，并在下个周期开始时回到高纬度。sunspot中心被称为umbra, 周围的丝状环绕结构被称为penumbra. 黑子具有极强的磁场，其阻止了convection为其输送能量所以温度降低变暗。在umbra区域磁场垂直于太阳表面，并与penumbra变为平行。一个周期内一个半球的sunspot具有相同的磁极，另一个半球具有相反的磁极；下一个周期两者磁极会交换。太阳整体磁场也会11年倒转一次两极，且总是发生于sunspot的低点 (黑子处于最高纬度的周期初).</p>
@@ -356,7 +324,11 @@
 <p><strong>Prominence</strong> (日珥): 分为Quiescent Prominence和eruptive Prominence. 前者是corona上长出的环状部分，比corona亮，来自静止的闭合磁场线。当其断裂时 (静止的磁场被扰动) 其可能会迅速演变成eruptive prominence, 向外喷出粒子，虽然其原理和耀斑类似，但日珥主要能量被从日冕上喷出的气体消耗，而非强电磁辐射。 </p>
 <p>The Magnetic dynamo model: 较为粗略的模型用于解释太阳周期性活动，简略如下图。</p>
 <p><img src="http://wx2.sinaimg.cn/large/005Xteq2gy1ftm83rkas9j30kl0migqw.jpg" alt=""></p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
     </div>
 </div>
 
@@ -551,12 +523,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/physics/">#物理</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/gamer/">#玩家</a>
         </div>
         
@@ -577,13 +549,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Event/">#Event</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/语言/">#语言</a>
+            <a href="/tags/Event/">#Event</a>
         </div>
         
         
@@ -593,6 +560,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/笔记/">#笔记</a>
         </div>
         
@@ -607,13 +579,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/历程/">#历程</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/音乐推荐/">#音乐推荐</a>
+            <a href="/tags/历程/">#历程</a>
         </div>
         
         
@@ -674,5 +646,21 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

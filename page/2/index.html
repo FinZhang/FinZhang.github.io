@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Fin zhang">
     
@@ -53,11 +53,11 @@
 
             }
         }
-    </style>
+    </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 <body>
-<div class="cube-body">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="cube-body">
     <nav id="cube-top-memu" class="cube-menu">
     <ul class="cube-menu-collapse">
         
@@ -235,17 +235,12 @@
 <p>$SO(2)$群：典型表示2x2实矩阵，$O\to \hat{O}^ T \hat{O}=1,~S\to \det(O)=1$</p>
 <p>$U(1)$群：1x1复矩阵（数），$U\to U^\dagger U=1$</p>
 <h4 id="2-三维旋转"><a href="#2-三维旋转" class="headerlink" title="2.三维旋转"></a>2.三维旋转</h4><p>$SO(3)$群：经典表示3x3实矩阵，具体例如</p>
-<p>$$R_x=\begin{pmatrix}1&amp;0&amp;0 \ 0&amp;\cos\theta&amp;-\sin\theta \  0&amp;\sin\theta&amp;\cos\theta \end{pmatrix},~R    _y=\begin{pmatrix}\cos\theta&amp;0&amp;\sin\theta \ 0&amp;1&amp;0 \  -\sin\theta &amp;0&amp;\cos\theta \end{pmatrix},~R_z=\begin{pmatrix}\cos\theta &amp; -\sin\theta&amp;0 \\sin\theta&amp;\cos\theta&amp;0  \ 0&amp;0&amp;1   \end{pmatrix}$$</p>
-<p>$SU(2)$群：经典表示2x2复矩阵，$\det U=1,~U^\dagger U=I$</p>
+<script type="math/tex; mode=display">R_x=\begin{pmatrix}1&0&0 \\ 0&\cos\theta&-\sin\theta \\  0&\sin\theta&\cos\theta \end{pmatrix},~R    _y=\begin{pmatrix}\cos\theta&0&\sin\theta \\ 0&1&0 \\  -\sin\theta &0&\cos\theta \end{pmatrix},~R_z=\begin{pmatrix}\cos\theta & -\sin\theta&0 \\\sin\theta&\cos\theta&0  \\ 0&0&1   \end{pmatrix}</script><p>$SU(2)$群：经典表示2x2复矩阵，$\det U=1,~U^\dagger U=I$</p>
 <p>其形式如</p>
-<p>$$U=\begin{pmatrix}a+di &amp; b+ci\b-ci&amp; a-di \end{pmatrix}$$</p>
-<p>考虑四元数的概念，令</p>
-<p>$$1=\begin{pmatrix} 1&amp;0\0&amp;1\end{pmatrix},~i=\begin{pmatrix} 0&amp;1\-1&amp;0\end{pmatrix},~j=\begin{pmatrix} 0&amp;i\i&amp;0\end{pmatrix},~k=\begin{pmatrix} i&amp;0\0&amp;-i\end{pmatrix}$$</p>
-<p>则有$U=a1+bi+c j+d k$，由于需要满足单位长度的要求，设$u=bi+c j+d k$是任意单位长度的“纯虚数矢量”，把变换写成</p>
-<p>$$U=\sin{\phi\over 2}1+\cos{\phi\over 2}u$$</p>
-<p>这说明2x2单位复矩阵和单位四元数是一一对应的。任意三维空间中的矢量用$\mathbf{v}=xi+yj+zk$表示（注意这里$i,j,k$是四元数单位不是三维空间基矢），一个任意的旋转变换表示为</p>
-<p>$$\mathbf{v}’=U^{-1}\mathbf{v}U$$                                                                                                                                                                         </p>
-<p>如此运算可以发现这一旋转让矢量旋转了$\phi$角度，那么显然对于$\theta$和$\theta +\pi$两个参量所代表的四元数，他们对应的是同一个旋转（旋转$2\theta$）。这（很不数学地）证明$SU(2)$是$SO(3)$群的双覆盖。</p>
+<script type="math/tex; mode=display">U=\begin{pmatrix}a+di & b+ci\\b-ci& a-di \end{pmatrix}</script><p>考虑四元数的概念，令</p>
+<script type="math/tex; mode=display">1=\begin{pmatrix} 1&0\\0&1\end{pmatrix},~i=\begin{pmatrix} 0&1\\-1&0\end{pmatrix},~j=\begin{pmatrix} 0&i\\i&0\end{pmatrix},~k=\begin{pmatrix} i&0\\0&-i\end{pmatrix}</script><p>则有$U=a1+bi+c j+d k$，由于需要满足单位长度的要求，设$u=bi+c j+d k$是任意单位长度的“纯虚数矢量”，把变换写成</p>
+<script type="math/tex; mode=display">U=\sin{\phi\over 2}1+\cos{\phi\over 2}u</script><p>这说明2x2单位复矩阵和单位四元数是一一对应的。任意三维空间中的矢量用$\mathbf{v}=xi+yj+zk$表示（注意这里$i,j,k$是四元数单位不是三维空间基矢），一个任意的旋转变换表示为</p>
+<script type="math/tex; mode=display">\mathbf{v}'=U^{-1}\mathbf{v}U</script><p>如此运算可以发现这一旋转让矢量旋转了$\phi$角度，那么显然对于$\theta$和$\theta +\pi$两个参量所代表的四元数，他们对应的是同一个旋转（旋转$2\theta$）。这（很不数学地）证明$SU(2)$是$SO(3)$群的双覆盖。</p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -328,7 +323,7 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>上半年在空间和Maliut公众号同步更新的音乐推荐歌单，目前处于停更状态<em>(:зゝ∠)</em></p>
+           <p>上半年在空间和Maliut公众号同步更新的音乐推荐歌单，目前处于停更状态_(:зゝ∠)_</p>
 <p><a href="http://music.163.com/#/m/playlist?id=602753137&amp;userid=248409876" target="_blank" rel="noopener">歌单网易云链接</a></p>
 <h1 id="Vol-1"><a href="#Vol-1" class="headerlink" title="Vol.1"></a>Vol.1</h1><p><img src="http://wx4.sinaimg.cn/large/005Xteq2ly1fm77711nrkj30xs0l41kx.jpg" alt=""></p>
 <p>这期以轻音乐为主，个人听轻音乐的历史也蛮长了，所以推荐也从这类音乐开始。一些极为著名的曲子就不列了（风居住的街道，日晷之梦，river flows in you,etc.）</p>
@@ -624,7 +619,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/admiral/">#Admiral</a>
         </div>
         
@@ -660,13 +655,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Event/">#Event</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/语言/">#语言</a>
         </div>
         
         
@@ -676,6 +666,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/笔记/">#笔记</a>
         </div>
         
@@ -685,13 +680,8 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/建站/">#建站</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/历程/">#历程</a>
         </div>
         
         
@@ -701,11 +691,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/思绪/">#思绪</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/TRPG/">#TRPG</a>
         </div>
         
@@ -757,5 +752,21 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

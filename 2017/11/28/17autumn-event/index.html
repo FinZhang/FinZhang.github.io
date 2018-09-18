@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Fin zhang">
     
@@ -53,11 +53,11 @@
 
             }
         }
-    </style>
+    </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 <body>
-<div class="cube-body">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="cube-body">
     <nav id="cube-top-memu" class="cube-menu">
     <ul class="cube-menu-collapse">
         
@@ -214,7 +214,7 @@
 <p>道中炮击支援，追求boss点S的带好决战支援。个人6大发3桶，A58 S83。</p>
 <p>11.20完成</p>
 <h1 id="E3-捷一号作戦、作戦発動！"><a href="#E3-捷一号作戦、作戦発動！" class="headerlink" title="E3 捷一号作戦、作戦発動！"></a>E3 捷一号作戦、作戦発動！</h1><p><img src="http://wx4.sinaimg.cn/large/005Xteq2ly1fme5p288laj30gl0afk0v.jpg" alt=""></p>
-<p>一图三吃，这根本不是中型活动<em>(:зゝ∠)</em></p>
+<p>一图三吃，这根本不是中型活动_(:зゝ∠)_</p>
 <h3 id="P1"><a href="#P1" class="headerlink" title="P1"></a>P1</h3><p>此段作战又叫防空姬无惨。有带路，但是完全可以无视带路黄金舰队走最长路骑防空姬脸。</p>
 <blockquote>
 <p>武藏 大和 衣阿华 厌战 飞鹰 隼鹰</p>
@@ -490,12 +490,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/admiral/">#Admiral</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/thought/">#杂学</a>
         </div>
         
@@ -510,7 +510,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/music/">#音乐</a>
         </div>
         
@@ -532,12 +532,12 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/语言/">#语言</a>
+            <a href="/tags/梦境/">#梦境</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/梦境/">#梦境</a>
+            <a href="/tags/语言/">#语言</a>
         </div>
         
         
@@ -551,8 +551,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
         </div>
         
         
@@ -562,16 +567,11 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/音乐推荐/">#音乐推荐</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/思绪/">#思绪</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/TRPG/">#TRPG</a>
         </div>
         
@@ -623,5 +623,21 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

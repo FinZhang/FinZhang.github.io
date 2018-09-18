@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Fin zhang">
     
@@ -53,11 +53,11 @@
 
             }
         }
-    </style>
+    </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </head>
 <body>
-<div class="cube-body">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="cube-body">
     <nav id="cube-top-memu" class="cube-menu">
     <ul class="cube-menu-collapse">
         
@@ -196,16 +196,17 @@
 <p>以下为效果测试：</p>
 <p>行内公式$\sin^2 x =0.5$</p>
 <p>行间公式</p>
-<p>$$\gamma^2+e^{i\pi}=a_1+a_2+a_3$$</p>
-<p>矩阵</p>
-<p>$$R_x=\begin{pmatrix}1&amp;0&amp;0\0&amp;\cos\theta&amp;-\sin\theta\0&amp;\sin\theta&amp;\cos\theta\end{pmatrix}$$</p>
-<p><strong>P.S.</strong> 实际上这些步骤是有相互重叠部分的，比如有教程仅包含1或者2+3都成功实现了$\LaTeX$的支持，但放我这就很神秘地不管用=。=如果你在操作中遇到问题，建议先查看MathJax的文档<del>或者换篇教程看看</del></p>
+<script type="math/tex; mode=display">\gamma^2+e^{i\pi}=a_1+a_2+a_3</script><p>矩阵</p>
+<script type="math/tex; mode=display">R_x=\begin{pmatrix}1&0&0\\0&\cos\theta&-\sin\theta\\0&\sin\theta&\cos\theta\end{pmatrix}</script><p><strong>P.S.</strong> 实际上这些步骤是有相互重叠部分的，比如有教程仅包含1或者2+3都成功实现了$\LaTeX$的支持，但放我这就很神秘地不管用=。=如果你在操作中遇到问题，建议先查看MathJax的文档<del>或者换篇教程看看</del></p>
 <p><strong>参考资料：</strong></p>
 <p><a href="http://catx.me/2014/03/09/hexo-mathjax-plugin/" target="_blank" rel="noopener">Hexo MathJax插件</a></p>
 <p><a href="http://www.jianshu.com/p/7ab21c7f0674" target="_blank" rel="noopener">在Hexo中渲染MathJax数学公式</a></p>
 <p><a href="https://liuhongjiang.github.io/hexotech/2015/08/12/mathjax-in-hexo/" target="_blank" rel="noopener">MathJax in hexo</a></p>
 <p><a href="https://docs.mathjax.org/en/latest/start.html" target="_blank" rel="noopener">Document for MathJax</a></p>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
     </div>
 </div>
 
@@ -395,7 +396,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/thought/">#杂学</a>
         </div>
         
@@ -405,7 +406,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/gamer/">#玩家</a>
         </div>
         
@@ -431,13 +432,13 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/语言/">#语言</a>
+        <div class="cube-box ">
+            <a href="/tags/梦境/">#梦境</a>
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/梦境/">#梦境</a>
+        <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
         </div>
         
         
@@ -446,7 +447,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/游戏推荐/">#游戏推荐</a>
         </div>
         
@@ -456,13 +457,13 @@
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/历程/">#历程</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/历程/">#历程</a>
         </div>
         
         
@@ -523,5 +524,21 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
 <div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
