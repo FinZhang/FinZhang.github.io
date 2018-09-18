@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Fin zhang">
+    
+    
+    
+    
+    
+    
+    <title>对称性常识备忘 | Thought Fragment in Fin</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about_me">关于笔者</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        <li>
+            <a class="scroll-to-top">contact author：fin@treeholeof.me</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    
+    <img src=" http://wx4.sinaimg.cn/large/005Xteq2gy1ftu1qerjypj31hc0u01kx.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Research Institute of Modern Magic</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1ftu1qerjypj31hc0u01kx.jpg');
+            background-repeat: no-repeat;
+            background-position: center -86px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1ftu1qerjypj31hc0u01kx.jpg');
+            background-position: center -130px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Research Institute of Modern Magic</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '1920',
+                height: '1080'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">对称性常识备忘</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-12-11
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/笔记/">#笔记</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+	<!-- Table of Contents -->
+
+	
+
+	<div id="toc" class="toc-article">
+
+	<strong class="toc-title">文章目录</strong>
+
+	<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#对称性工具"><span class="toc-text">对称性工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lie群和Lie代数"><span class="toc-text">Lie群和Lie代数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-二维旋转"><span class="toc-text">1.二维旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-三维旋转"><span class="toc-text">2.三维旋转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Lie代数"><span class="toc-text">3.Lie代数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SO-3-群的生成元和Lie代数"><span class="toc-text">$SO(3)$群的生成元和Lie代数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SU-2-群的生成元和Lie代数"><span class="toc-text">$SU(2)$群的生成元和Lie代数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表示论"><span class="toc-text">表示论</span></a></li></ol></li></ol>
+
+	</div>
+
+	
+
+
+        <p>一些最基本的对称和基于此的粒子模型内容，基本基于参与翻译的Physics in symmetry一书。全程物理式数学，无证明。</p>
+<h2 id="对称性工具"><a href="#对称性工具" class="headerlink" title="对称性工具"></a>对称性工具</h2><h3 id="Lie群和Lie代数"><a href="#Lie群和Lie代数" class="headerlink" title="Lie群和Lie代数"></a>Lie群和Lie代数</h3><h4 id="1-二维旋转"><a href="#1-二维旋转" class="headerlink" title="1.二维旋转"></a>1.二维旋转</h4><p>一般有两种表示</p>
+<p>$SO(2)$群：典型表示2x2实矩阵，$O\to \hat{O}^ T \hat{O}=1,~S\to \det(O)=1$</p>
+<p>$U(1)$群：1x1复矩阵（数），$U\to U^\dagger U=1$</p>
+<h4 id="2-三维旋转"><a href="#2-三维旋转" class="headerlink" title="2.三维旋转"></a>2.三维旋转</h4><p>$SO(3)$群：经典表示3x3实矩阵，具体例如</p>
+<p>$$R_x=\begin{pmatrix}1&amp;0&amp;0 \ 0&amp;\cos\theta&amp;-\sin\theta \  0&amp;\sin\theta&amp;\cos\theta \end{pmatrix},~R    _y=\begin{pmatrix}\cos\theta&amp;0&amp;\sin\theta \ 0&amp;1&amp;0 \  -\sin\theta &amp;0&amp;\cos\theta \end{pmatrix},~R_z=\begin{pmatrix}\cos\theta &amp; -\sin\theta&amp;0 \\sin\theta&amp;\cos\theta&amp;0  \ 0&amp;0&amp;1   \end{pmatrix}$$</p>
+<p>$SU(2)$群：经典表示2x2复矩阵，$\det U=1,~U^\dagger U=I$</p>
+<p>其形式如</p>
+<p>$$U=\begin{pmatrix}a+di &amp; b+ci\b-ci&amp; a-di \end{pmatrix}$$</p>
+<p>考虑四元数的概念，令</p>
+<p>$$1=\begin{pmatrix} 1&amp;0\0&amp;1\end{pmatrix},~i=\begin{pmatrix} 0&amp;1\-1&amp;0\end{pmatrix},~j=\begin{pmatrix} 0&amp;i\i&amp;0\end{pmatrix},~k=\begin{pmatrix} i&amp;0\0&amp;-i\end{pmatrix}$$</p>
+<p>则有$U=a1+bi+c j+d k$，由于需要满足单位长度的要求，设$u=bi+c j+d k$是任意单位长度的“纯虚数矢量”，把变换写成</p>
+<p>$$U=\sin{\phi\over 2}1+\cos{\phi\over 2}u$$</p>
+<p>这说明2x2单位复矩阵和单位四元数是一一对应的。任意三维空间中的矢量用$\mathbf{v}=xi+yj+zk$表示（注意这里$i,j,k$是四元数单位不是三维空间基矢），一个任意的旋转变换表示为</p>
+<p>$$\mathbf{v}’=U^{-1}\mathbf{v}U$$                                                                                                                                                                         </p>
+<p>如此运算可以发现这一旋转让矢量旋转了$\phi$角度，那么显然对于$\theta$和$\theta +\pi$两个参量所代表的四元数，他们对应的是同一个旋转（旋转$2\theta$）。这（很不数学地）证明$SU(2)$是$SO(3)$群的双覆盖。</p>
+<a id="more"></a>
+<h4 id="3-Lie代数"><a href="#3-Lie代数" class="headerlink" title="3.Lie代数"></a>3.Lie代数</h4><p>在某个抽象的群空间上定义某个参量的无限小变换</p>
+<p>$$g(\varepsilon)=1+\varepsilon X$$</p>
+<p>X被称为生成元，直观来看，这个名字是因为这个群的元素可以靠他来生成。记一个有限大小的变换为</p>
+<p>$h(\theta)=\lim_{n\to\infty}(1+{\theta\over n}X)^{n}\equiv e^{\theta X}$</p>
+<p>某个群$G$的Lie代数被定义为（注意恒等变换的存在，0或者说0矩阵总是一个生成元）</p>
+<p>${X|\mathrm{ if~~} e^{\theta X} \in G,~\theta\in \mathbb{R} }$</p>
+<p>显然一个群的Lie代数由这个群的所有生成元构成。拥有Lie代数结构的群被称为Lie群。Lie代数本身也同样构成一个新群，使用Lie括号进行群乘来满足群的封闭性（注意不使用$G$本身的群乘P38）。对于矩阵群（元素是矩阵）来说，李括号是对易子</p>
+<p>$$[X,Y]=XY-YX$$</p>
+<p>一般来说$XY,YX$都不是Lie代数里的元素，但他们的差一定是。（此处及上文省略了一万个数学证明）</p>
+<blockquote>
+<h4 id="SO-3-群的生成元和Lie代数"><a href="#SO-3-群的生成元和Lie代数" class="headerlink" title="$SO(3)$群的生成元和Lie代数"></a>$SO(3)$群的生成元和Lie代数</h4><p>由群的定义：$\det O=1,~O^T O=1$</p>
+<p>设$O=e^{\phi J}$：$\mathrm{tr}(J)=0,~J^T+J=0$。为了物理上的考虑，我们要求J是厄米共轭的，对$J$ 乘上一个虚数单位i即可（注意虽然群矩阵是实数，但生成元含有虚数），上面的要求改写为</p>
+<p>$$O=e^{-i \phi J},~tr(J)=0,~J^\dagger=J$$</p>
+<p>由上可以得到三个完备的线性无关生成元</p>
+<p>$$J_1=i\begin{pmatrix}0&amp;0&amp;0\0&amp;0&amp;1\0&amp;-1&amp;0\end{pmatrix},~J_2=i\begin{pmatrix}0&amp;0&amp;-1\0&amp;0&amp;0\1&amp;0&amp;0\end{pmatrix},~J_3=i\begin{pmatrix}0&amp;1&amp;0\-1&amp;0&amp;0\0&amp;0&amp;0\end{pmatrix}$$</p>
+<p>可以简单将上式表达为$(J_i)<em>{jk}=i\varepsilon</em>{ijk}$.</p>
+<p>由这些生成元产生的有限大小变换正是三维空间内的旋转，举个例子比如</p>
+<p>$$\begin{equation}\begin{split} R_1=e^{\phi J_1}&amp;=\sum_{n=0}^\infty {\phi^n\over n!}J^n_1 \&amp;=\sum_{n=0}^\infty (-1)^n{\phi^{2n+1}\over (2n+1)!}J_1 + \sum_{n=0}^\infty (-1)^n{\phi^{2n}\over (2n)!}I  \&amp;=\sin\phi J_1+\cos\phi I \&amp;=\begin{pmatrix}\cos\phi&amp;\sin\phi\-\sin\phi &amp;\cos\phi\end{pmatrix}\end{split}\end{equation}$$</p>
+<p>再加上左上角的$e^0=1$，即得绕X轴的旋转算符。</p>
+<p>由矩阵乘法易得生成元的Lie括号</p>
+<p>$$[J_i,J_j]=i\varepsilon_{ijk}J_k$$</p>
+</blockquote>
+<p><strong>Lie代数的抽象定义</strong> </p>
+<p>给定一向量空间$\mathfrak{g}$和其上面的一个二元运算$[~,~],~\mathfrak{g} \times \mathfrak{g}\to \mathfrak{g}$，且满足</p>
+<p>1.双线性</p>
+<p>2.反交换律</p>
+<p>3.Jacobi恒等式：$\forall ~x,y,z\in \mathfrak{g},~[X,[Y,Z]]+[Z,[X,Y]]+[Y,[Z,X]]=0$</p>
+<p>称这一空间$\mathfrak{g}$为一Lie代数。</p>
+<blockquote>
+<h4 id="SU-2-群的生成元和Lie代数"><a href="#SU-2-群的生成元和Lie代数" class="headerlink" title="$SU(2)$群的生成元和Lie代数"></a>$SU(2)$群的生成元和Lie代数</h4><p>由群的定义：$\det U=1,~U^\dagger U=1$</p>
+<p>设$U=e^{\phi J}$：$\mathrm{tr}(J)=0,~J^\dagger=J$。老样子，出于物理上的要求$J$是厄米的。</p>
+<p>由上条件得到群三个完备的线性无关生成元</p>
+<p>$\sigma_1=\begin{pmatrix}0&amp;1 \ 1&amp;0\end{pmatrix},~\sigma_2=\begin{pmatrix}0&amp;i \ -i&amp;0\end{pmatrix},~\sigma_3=\begin{pmatrix}1&amp;0 \ 0&amp;-1\end{pmatrix}$</p>
+<p>此为著名的Pauli矩阵。令$J_i={\sigma_i\over 2}​$，得到</p>
+<p>$$[J_i,J_j]=i\varepsilon_{ijk}J_k$$</p>
+<p>这和$SO(3)$群的李代数是一样的，J和Pauli矩阵的二分之一系数和我们之前双覆盖的结论相同。</p>
+<p>注意2x2复矩阵只是$SU(2)$群最具代表性的表示，远不是它的唯一表示。</p>
+</blockquote>
+<p><strong>Lie群的抽象定义</strong> </p>
+<p>Lie群是一个群，同时是一个微分流形，且满足群乘诱导的流形到流形的映射可微。</p>
+<p>例如：$U(1)$同构$SO(2)$，且相当于流形一维单位圆$S^1$;</p>
+<p>$SU(2)$双覆盖$SO(3)$，且相当于流形三维超球面$S^3$</p>
+<p>任一Lie代数仅对应一个单连通Lie群（流形），此群被称为覆盖群。$U(1)$和$SO(2)$同为Lie代数${0,1}$的覆盖群（注意此处Lie代数的集合中仅有两个元素）。$SU(2)$就是Lie代数$[J_i,J_j]=i\varepsilon_{ijk}J_k$的覆盖群($S^3$)，而$SO(3)$群将$S^3$的相对点等同，并不具有单连通这样良好的性质，不是覆盖群。</p>
+<p>给定一个Lie代数，我们可以通过Lie代数的表示导出它覆盖群的表示。然后利用Lie代数元素（生成元）的e指数形式就可得到覆盖群任意群元的矩阵表示。</p>
+<h3 id="表示论"><a href="#表示论" class="headerlink" title="表示论"></a>表示论</h3><p>从群$G$到某个向量空间$V$上的全体线性变换组成的集合的映射，称为$G$的一个表示（映射$\to$表示）</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/12/12/mathjax/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Hexo的MathJax使用
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/12/10/so_contract/">
+                读《社会契约论》
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="http://wx4.sinaimg.cn/mw690/005Xteq2ly1fm7aokk73aj306c06atak.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Fin zhang</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>19</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/31/astro3/" title="天体物理笔记 三">天体物理笔记 三</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/12/hosp/" title="跑团实况-神赦医院">跑团实况-神赦医院</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/06/astro2/" title="天体物理笔记 二">天体物理笔记 二</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/27/normal_end/" title="《仙林163，汉口二十二》-写在NE通关字幕后">《仙林163，汉口二十二》-写在NE通关字幕后</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/26/18winter-event/" title="捷号決戦！邀撃、レイテ沖海戦(后篇)">捷号決戦！邀撃、レイテ沖海戦(后篇)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/admiral/">#Admiral</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/thought/">#杂学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/physics/">#物理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/gamer/">#玩家</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/music/">#音乐</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Event/">#Event</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/梦境/">#梦境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/笔记/">#笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/游戏推荐/">#游戏推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/思绪/">#思绪</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/TRPG/">#TRPG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx4.sinaimg.cn/mw690/005Xteq2gy1fmqo6rvg5pj30bp0bltfj.jpg">
+            <a href="https://doubilee.com/" target="_blank">BUWAILI</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo7t1cksj30b10azq2y.jpg">
+            <a href="https://maliut.space/" target="_blank">Mの综合研究</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo8drztlj30c60c6gly.jpg">
+            <a href="https://zhangtianxing.com/" target="_blank">Netting Sisyphus</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2018 Fin zhang
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

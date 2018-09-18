@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Fin zhang">
+    
+    
+    
+    
+    
+    
+    <title>Thought Fragment in Fin</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about_me">关于笔者</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        <li>
+            <a class="scroll-to-top">contact author：fin@treeholeof.me</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    
+    <img src=" http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg');
+            background-repeat: no-repeat;
+            background-position: center -86px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg');
+            background-position: center -130px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '1920',
+                height: '1080'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            
+<div class="cube-excerpt" id="cube-excerpt-英语学术写作笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/19/ac_en_writing/">英语学术写作笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/语言/" class="cube-excerpt-tag-link">#语言</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>使用教材：Science Research Writing for Non-Native Speakers of English. 感谢曹伟光同学的分享。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/19/ac_en_writing/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Hexo的MathJax使用">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/12/mathjax/">Hexo的MathJax使用</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-12
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/建站/" class="cube-excerpt-tag-link">#建站</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>前几天为了博客的LaTeX支持折腾了好一会，最后在综合了网上各种教程和群友的帮助后顺利解决了，这里记录一下具体操作。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/12/mathjax/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-对称性常识备忘">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/11/phys_sym/">对称性常识备忘</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-11
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/笔记/" class="cube-excerpt-tag-link">#笔记</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>一些最基本的对称和基于此的粒子模型内容，基本基于参与翻译的Physics in symmetry一书。全程物理式数学，无证明。</p>
+<h2 id="对称性工具"><a href="#对称性工具" class="headerlink" title="对称性工具"></a>对称性工具</h2><h3 id="Lie群和Lie代数"><a href="#Lie群和Lie代数" class="headerlink" title="Lie群和Lie代数"></a>Lie群和Lie代数</h3><h4 id="1-二维旋转"><a href="#1-二维旋转" class="headerlink" title="1.二维旋转"></a>1.二维旋转</h4><p>一般有两种表示</p>
+<p>$SO(2)$群：典型表示2x2实矩阵，$O\to \hat{O}^ T \hat{O}=1,~S\to \det(O)=1$</p>
+<p>$U(1)$群：1x1复矩阵（数），$U\to U^\dagger U=1$</p>
+<h4 id="2-三维旋转"><a href="#2-三维旋转" class="headerlink" title="2.三维旋转"></a>2.三维旋转</h4><p>$SO(3)$群：经典表示3x3实矩阵，具体例如</p>
+<p>$$R_x=\begin{pmatrix}1&amp;0&amp;0 \ 0&amp;\cos\theta&amp;-\sin\theta \  0&amp;\sin\theta&amp;\cos\theta \end{pmatrix},~R    _y=\begin{pmatrix}\cos\theta&amp;0&amp;\sin\theta \ 0&amp;1&amp;0 \  -\sin\theta &amp;0&amp;\cos\theta \end{pmatrix},~R_z=\begin{pmatrix}\cos\theta &amp; -\sin\theta&amp;0 \\sin\theta&amp;\cos\theta&amp;0  \ 0&amp;0&amp;1   \end{pmatrix}$$</p>
+<p>$SU(2)$群：经典表示2x2复矩阵，$\det U=1,~U^\dagger U=I$</p>
+<p>其形式如</p>
+<p>$$U=\begin{pmatrix}a+di &amp; b+ci\b-ci&amp; a-di \end{pmatrix}$$</p>
+<p>考虑四元数的概念，令</p>
+<p>$$1=\begin{pmatrix} 1&amp;0\0&amp;1\end{pmatrix},~i=\begin{pmatrix} 0&amp;1\-1&amp;0\end{pmatrix},~j=\begin{pmatrix} 0&amp;i\i&amp;0\end{pmatrix},~k=\begin{pmatrix} i&amp;0\0&amp;-i\end{pmatrix}$$</p>
+<p>则有$U=a1+bi+c j+d k$，由于需要满足单位长度的要求，设$u=bi+c j+d k$是任意单位长度的“纯虚数矢量”，把变换写成</p>
+<p>$$U=\sin{\phi\over 2}1+\cos{\phi\over 2}u$$</p>
+<p>这说明2x2单位复矩阵和单位四元数是一一对应的。任意三维空间中的矢量用$\mathbf{v}=xi+yj+zk$表示（注意这里$i,j,k$是四元数单位不是三维空间基矢），一个任意的旋转变换表示为</p>
+<p>$$\mathbf{v}’=U^{-1}\mathbf{v}U$$                                                                                                                                                                         </p>
+<p>如此运算可以发现这一旋转让矢量旋转了$\phi$角度，那么显然对于$\theta$和$\theta +\pi$两个参量所代表的四元数，他们对应的是同一个旋转（旋转$2\theta$）。这（很不数学地）证明$SU(2)$是$SO(3)$群的双覆盖。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/11/phys_sym/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-读《社会契约论》">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/10/so_contract/">读《社会契约论》</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-10
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/思绪/" class="cube-excerpt-tag-link">#思绪</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>不谈时政，只谈书</p>
+<p>坑待填</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/10/so_contract/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-捷号決戦！邀撃、レイテ沖海戦(前篇)">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/11/28/17autumn-event/">捷号決戦！邀撃、レイテ沖海戦(前篇)</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-11-28
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Event/" class="cube-excerpt-tag-link">#Event</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>2017年秋季期间限定海域作战记录</p>
+<p><img src="http://wx4.sinaimg.cn/large/005Xteq2ly1fm77aebtgnj30lo02wwj9.jpg" alt=""></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/11/28/17autumn-event/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-日始之音 Vol.1~5">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/10/16/music_recommend_1-5/">日始之音 Vol.1~5</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-10-16
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/音乐推荐/" class="cube-excerpt-tag-link">#音乐推荐</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>上半年在空间和Maliut公众号同步更新的音乐推荐歌单，目前处于停更状态<em>(:зゝ∠)</em></p>
+<p><a href="http://music.163.com/#/m/playlist?id=602753137&amp;userid=248409876" target="_blank" rel="noopener">歌单网易云链接</a></p>
+<h1 id="Vol-1"><a href="#Vol-1" class="headerlink" title="Vol.1"></a>Vol.1</h1><p><img src="http://wx4.sinaimg.cn/large/005Xteq2ly1fm77711nrkj30xs0l41kx.jpg" alt=""></p>
+<p>这期以轻音乐为主，个人听轻音乐的历史也蛮长了，所以推荐也从这类音乐开始。一些极为著名的曲子就不列了（风居住的街道，日晷之梦，river flows in you,etc.）</p>
+<h3 id="1-Kan-R-Gao-For-River-Piano-Sarah-amp-Tommy’s-Version"><a href="#1-Kan-R-Gao-For-River-Piano-Sarah-amp-Tommy’s-Version" class="headerlink" title="1.Kan R. Gao-For River-Piano(Sarah &amp; Tommy’s Version)"></a>1.Kan R. Gao-For River-Piano(Sarah &amp; Tommy’s Version)</h3><p>来自To the moon的游戏配乐，极具剧情表现力的原创音乐是这部RPGMAKER游戏的两大台柱之一，这个版本的main theme变奏知名度比Johnny版本的小，我个人偏爱这个版本多一些。</p>
+<h3 id="2-Kan-R-Gao-Moonwisher"><a href="#2-Kan-R-Gao-Moonwisher" class="headerlink" title="2.Kan R. Gao-Moonwisher"></a>2.Kan R. Gao-Moonwisher</h3><p>第二首依旧出自To the moon，John和River第一次见面的主题音乐，抒情满分的曲子。</p>
+<h3 id="3-Laura-Shigihara-Everything‘s-Alright"><a href="#3-Laura-Shigihara-Everything‘s-Alright" class="headerlink" title="3.Laura Shigihara-Everything‘s Alright"></a>3.Laura Shigihara-Everything‘s Alright</h3><p>To the Moon三连击（笑），这首插曲是整个游戏中唯一有词的歌，在游戏后期出现的时候催泪效果拔群。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/10/16/music_recommend_1-5/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-量子力学笔记">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/01/20/qmnote/">量子力学笔记</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-01-20
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/笔记/" class="cube-excerpt-tag-link">#笔记</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h1 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h1><h2 id="I-Note-for-Class"><a href="#I-Note-for-Class" class="headerlink" title="I Note for Class"></a>I Note for Class</h2><h3 id="1-波函数与薛定谔方程"><a href="#1-波函数与薛定谔方程" class="headerlink" title="1 波函数与薛定谔方程"></a>1 波函数与薛定谔方程</h3><h3 id="2-一维定态问题"><a href="#2-一维定态问题" class="headerlink" title="2 一维定态问题"></a>2 一维定态问题</h3><pre><code>2.1 对称性 
+</code></pre><h3 id="3-力学量算符与表象变换"><a href="#3-力学量算符与表象变换" class="headerlink" title="3 力学量算符与表象变换"></a>3 力学量算符与表象变换</h3><pre><code>3.1 算符及运算规则 
+    3.1.1 希尔伯特空间 (Hilbert space) 及算符 
+    3.1.2 量子力学中的常见算符 
+3.2 力学量用算符表示 
+    3.2.1 两个力学量的共同本征函数 
+    3.2.2 几个基本的力学量算符 
+3.3 量子力学的矩阵形式及表象变换 
+3.4 粒子数空间 Fock 空间 
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/01/20/qmnote/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-跨越两代人的史诗-圣战之系谱">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2016/09/09/holywar/">跨越两代人的史诗-圣战之系谱</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2016-09-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/游戏推荐/" class="cube-excerpt-tag-link">#游戏推荐</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p><img src="http://wx3.sinaimg.cn/large/005Xteq2gy1ftxeyunz1kj31560mwk8y.jpg" alt=""></p>
+<p>本文原发于<a href="https://cowlevel.net/game/Fire_Emblem_Genealogy_of_the_Holy_War/review/1443" target="_blank" rel="noopener">奶牛关</a></p>
+<p>如果有人问我在我游戏启蒙阶段影响最大的游戏是什么，我想我会毫不犹豫地说出系谱的名字。虽然时间已经过去了七八年，我仍然记得剧情甚至各种过关的细节，<del>也正是这一作把我带进了火纹的大坑</del>。</p>
+<p>《火焰纹章—圣战之系谱》（以下简称系谱）是任天堂在1996年发售在SFC平台上的战棋游戏。虽然不比其他平台上他年轻的战棋后辈一样有着漂亮的画面和炫酷的特效以及巨大的容量，系谱用小小4MB的容量在他的时代做到了最好，干净优雅的UI和游戏画风协调统一，即使在现在看来也不错，比起他的前辈《纹章之谜》来说更是巨大的飞跃。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2016/09/09/holywar/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-我的物理，我的大学">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2014/12/27/my_phy_my_uni/">我的物理，我的大学</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2014-12-27
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/历程/" class="cube-excerpt-tag-link">#历程</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>此篇成文于2014年12月，差不多是我刚刚进入大学的时候。那时候的我充满了对梦想和未来的迷茫，其中一部分也延续到了三年后的现在。我想这篇文章很适合作为博客补档的第一篇文章，作为各种意义上的纪念。<br><img src="http://wx1.sinaimg.cn/large/005Xteq2ly1fm776q5y1xj31kw12rb2b.jpg" alt=""></p>
+<p>前注：我必须要感谢物理学史的这篇考核作业，这促使我回顾了我来到世界上短短的十九年零几个月的人生（尤其是和物理相关的部分），这话的确说的大了点，毕竟这个年龄说人生从来都是naive 的行为，但我也不知道除开这么说，我该如何定义我这两个晚上的行为，你也可以把他当做一篇脑洞比较大的年终终结，某种听上去让人不明觉厉的文体……恩，大概就是这样。</p>
+<p>又注：如果你能忍耐我上面的废话看到这里，非常感谢，下面的这些文字包含了我这两个晚上码的主要内容，但是很多思想其实是生成了很久了，我只是借这篇文章的机会尽可能完全地剖析了自己，并用自己贫瘠的语言表达能力用文字写了出来，希望不会给各位带来困扰。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2014/12/27/my_phy_my_uni/">阅读全文</a>
+    </footer>
+</div>
+
+
+
+<ul class="cube-pagination cube-pagination-6">
+    
+    <li class="cube-pagination-prev">
+        <a href="/">« 上一页</a>
+    </li>
+    
+    
+        
+            
+            <li class="cube-pagination-index">
+                <a href="/">1</a>
+            </li>
+            
+        
+            
+            <li class="cube-pagination-index disabled">
+                <span>2</span>
+            </li>
+            
+        
+    
+
+    
+    <li class="cube-pagination-next disabled">
+        <span>下一页 »</span>
+    </li>
+    
+</ul>
+
+<!--其他组件后续添加-->
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="http://wx4.sinaimg.cn/mw690/005Xteq2ly1fm7aokk73aj306c06atak.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Fin zhang</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>19</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/31/astro3/" title="天体物理笔记 三">天体物理笔记 三</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/12/hosp/" title="跑团实况-神赦医院">跑团实况-神赦医院</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/06/astro2/" title="天体物理笔记 二">天体物理笔记 二</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/27/normal_end/" title="《仙林163，汉口二十二》-写在NE通关字幕后">《仙林163，汉口二十二》-写在NE通关字幕后</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/26/18winter-event/" title="捷号決戦！邀撃、レイテ沖海戦(后篇)">捷号決戦！邀撃、レイテ沖海戦(后篇)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/admiral/">#Admiral</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/thought/">#杂学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/physics/">#物理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/gamer/">#玩家</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/music/">#音乐</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Event/">#Event</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/梦境/">#梦境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/笔记/">#笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/游戏推荐/">#游戏推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/思绪/">#思绪</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TRPG/">#TRPG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx4.sinaimg.cn/mw690/005Xteq2gy1fmqo6rvg5pj30bp0bltfj.jpg">
+            <a href="https://doubilee.com/" target="_blank">BUWAILI</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo7t1cksj30b10azq2y.jpg">
+            <a href="https://maliut.space/" target="_blank">Mの综合研究</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo8drztlj30c60c6gly.jpg">
+            <a href="https://zhangtianxing.com/" target="_blank">Netting Sisyphus</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2018 Fin zhang
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

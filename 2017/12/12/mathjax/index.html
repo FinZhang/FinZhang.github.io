@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Fin zhang">
+    
+    
+    
+    
+    
+    
+    <title>Hexo的MathJax使用 | Thought Fragment in Fin</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about_me">关于笔者</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        <li>
+            <a class="scroll-to-top">contact author：fin@treeholeof.me</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    
+    <img src=" http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Library of Lord El-Melloi II</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg');
+            background-repeat: no-repeat;
+            background-position: center -86px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg');
+            background-position: center -130px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Library of Lord El-Melloi II</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '1920',
+                height: '1080'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Hexo的MathJax使用</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-12-12
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/建站/">#建站</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+	<!-- Table of Contents -->
+
+	
+
+
+        <p>前几天为了博客的LaTeX支持折腾了好一会，最后在综合了网上各种教程和群友的帮助后顺利解决了，这里记录一下具体操作。</p>
+<a id="more"></a>
+<h4 id="1-安装Hexo的MathJax插件"><a href="#1-安装Hexo的MathJax插件" class="headerlink" title="1.安装Hexo的MathJax插件"></a>1.安装Hexo的MathJax插件</h4><p>在博客根目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br><span class="line">hexo math install</span><br></pre></td></tr></table></figure>
+<p>据教程这样就能正常使用LaTeX，但我看了完全没有效果。如果你遇到了同样的问题可以参考下面的步骤。</p>
+<h3 id="2-在Blog页面插入对MathJax-CDN-script的引用"><a href="#2-在Blog页面插入对MathJax-CDN-script的引用" class="headerlink" title="2.在Blog页面插入对MathJax CDN script的引用"></a>2.在Blog页面插入对MathJax CDN script的引用</h3><p>在你需要LaTeX支持的页面末尾添加如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>实测这样行间公式可以正常渲染。但行内公式无法读取，得知是MathJax插件没有提供\$….\$表示行内公式环境。需要手动配置。</p>
+<h3 id="3-配置MathJax的inline-math"><a href="#3-配置MathJax的inline-math" class="headerlink" title="3.配置MathJax的inline math"></a>3.配置MathJax的inline math</h3><p>在你使用的Hexo的主题文件夹的<code>/layout/_partial/</code>目录下新建文件<code>mathjax.ejs</code>，输入以下内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  MathJax.Hub.Config(&#123;</span></span><br><span class="line"><span class="undefined">    tex2jax: &#123;</span></span><br><span class="line"><span class="undefined">      inlineMath: [ ['$','$'], ["\\(","\\)"] ],</span></span><br><span class="line"><span class="undefined">      processEscapes: true</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    MathJax.Hub.Config(&#123;</span></span><br><span class="line"><span class="undefined">      tex2jax: &#123;</span></span><br><span class="line"><span class="undefined">        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    MathJax.Hub.Queue(function() &#123;</span></span><br><span class="line"><span class="undefined">        var all = MathJax.Hub.getAllJax(), i;</span></span><br><span class="line"><span class="xml">        for(i=0; i <span class="tag">&lt; <span class="attr">all.length</span>; <span class="attr">i</span> += <span class="string">1)</span> &#123;</span></span></span><br><span class="line"><span class="undefined">            all[i].SourceElement().parentNode.className += ' has-jax';</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined"> </span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>保存后删除public文件夹再次 <code>hexo generate</code>  来使修改生效。</p>
+<h3 id="4-可能存在的兼容问题"><a href="#4-可能存在的兼容问题" class="headerlink" title="4.可能存在的兼容问题"></a>4.可能存在的兼容问题</h3><p>Hexo源生的Markdown解释器可能会把 LaTeX 命令编译成MD语法例如把两个下划线之间的内容变成斜体。可以考虑更换解释器来解决这个问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br></pre></td></tr></table></figure>
+<p>以下为效果测试：</p>
+<p>行内公式$\sin^2 x =0.5$</p>
+<p>行间公式</p>
+<p>$$\gamma^2+e^{i\pi}=a_1+a_2+a_3$$</p>
+<p>矩阵</p>
+<p>$$R_x=\begin{pmatrix}1&amp;0&amp;0\0&amp;\cos\theta&amp;-\sin\theta\0&amp;\sin\theta&amp;\cos\theta\end{pmatrix}$$</p>
+<p><strong>P.S.</strong> 实际上这些步骤是有相互重叠部分的，比如有教程仅包含1或者2+3都成功实现了$\LaTeX$的支持，但放我这就很神秘地不管用=。=如果你在操作中遇到问题，建议先查看MathJax的文档<del>或者换篇教程看看</del></p>
+<p><strong>参考资料：</strong></p>
+<p><a href="http://catx.me/2014/03/09/hexo-mathjax-plugin/" target="_blank" rel="noopener">Hexo MathJax插件</a></p>
+<p><a href="http://www.jianshu.com/p/7ab21c7f0674" target="_blank" rel="noopener">在Hexo中渲染MathJax数学公式</a></p>
+<p><a href="https://liuhongjiang.github.io/hexotech/2015/08/12/mathjax-in-hexo/" target="_blank" rel="noopener">MathJax in hexo</a></p>
+<p><a href="https://docs.mathjax.org/en/latest/start.html" target="_blank" rel="noopener">Document for MathJax</a></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/12/19/ac_en_writing/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                英语学术写作笔记
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/12/11/phys_sym/">
+                对称性常识备忘
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="http://wx4.sinaimg.cn/mw690/005Xteq2ly1fm7aokk73aj306c06atak.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Fin zhang</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>19</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/31/astro3/" title="天体物理笔记 三">天体物理笔记 三</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/12/hosp/" title="跑团实况-神赦医院">跑团实况-神赦医院</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/06/astro2/" title="天体物理笔记 二">天体物理笔记 二</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/27/normal_end/" title="《仙林163，汉口二十二》-写在NE通关字幕后">《仙林163，汉口二十二》-写在NE通关字幕后</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/26/18winter-event/" title="捷号決戦！邀撃、レイテ沖海戦(后篇)">捷号決戦！邀撃、レイテ沖海戦(后篇)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/admiral/">#Admiral</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/thought/">#杂学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/physics/">#物理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/gamer/">#玩家</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/music/">#音乐</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Event/">#Event</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/梦境/">#梦境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/笔记/">#笔记</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/游戏推荐/">#游戏推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/思绪/">#思绪</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TRPG/">#TRPG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx4.sinaimg.cn/mw690/005Xteq2gy1fmqo6rvg5pj30bp0bltfj.jpg">
+            <a href="https://doubilee.com/" target="_blank">BUWAILI</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo7t1cksj30b10azq2y.jpg">
+            <a href="https://maliut.space/" target="_blank">Mの综合研究</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo8drztlj30c60c6gly.jpg">
+            <a href="https://zhangtianxing.com/" target="_blank">Netting Sisyphus</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2018 Fin zhang
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

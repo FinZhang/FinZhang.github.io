@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Fin zhang">
+    
+    
+    
+    
+    
+    
+    <title>Thought Fragment in Fin</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about_me">关于笔者</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        <li>
+            <a class="scroll-to-top">contact author：fin@treeholeof.me</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    
+    <img src=" http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg');
+            background-repeat: no-repeat;
+            background-position: center -86px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://wx4.sinaimg.cn/large/005Xteq2gy1fttfja78l0j31hc0u04oc.jpg');
+            background-position: center -130px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '1920',
+                height: '1080'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            
+<div class="cube-excerpt" id="cube-excerpt-天体物理笔记 三">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/31/astro3/">天体物理笔记 三</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-31
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/笔记/" class="cube-excerpt-tag-link">#笔记</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>使用教材：An Introduction to Modern Astrophysics </p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/31/astro3/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-跑团实况-神赦医院">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/12/hosp/">跑团实况-神赦医院</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-12
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/TRPG/" class="cube-excerpt-tag-link">#TRPG</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>一个COC的短团，三个人都是萌新，笔者是KP. 在皮个不停的PC折腾下，不停开主角光环才算成功跑完了一次团没撕卡，此文来自当时的跑团记录。<del>让我记录下这有趣的故事.jpg</del></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/12/hosp/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-天体物理笔记 二">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/08/06/astro2/">天体物理笔记 二</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-08-06
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/笔记/" class="cube-excerpt-tag-link">#笔记</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>使用教材：An Introduction to Modern Astrophysics </p>
+<p>此部分为11-13章：恒星内部/星际介质与恒星形成/主序和（小质量）后主序演化</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/08/06/astro2/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-《仙林163，汉口二十二》-写在NE通关字幕后">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/27/normal_end/">《仙林163，汉口二十二》-写在NE通关字幕后</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-27
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/历程/" class="cube-excerpt-tag-link">#历程</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>距毕业典礼已过去一月有余，如果整个大学是个AVG的话，这时候制作人员字幕都该滚完了。不过如今的剧本总喜欢在字幕后面加上半近乎后日谈的东西，所以现在我蹦出来码点字的违和感大概也不会很重。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/27/normal_end/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-捷号決戦！邀撃、レイテ沖海戦(后篇)">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/26/18winter-event/">捷号決戦！邀撃、レイテ沖海戦(后篇)</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-26
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Event/" class="cube-excerpt-tag-link">#Event</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>2018年冬季期间限定海域作战记录</p>
+<p><img src="https://upload.kcwiki.org/commons/d/d6/2018WinterEventBannerAlt.png" alt=""></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/26/18winter-event/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-天体物理笔记 一">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/07/25/astro/">天体物理笔记 一</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-07-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/笔记/" class="cube-excerpt-tag-link">#笔记</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>使用教材：An Introduction to Modern Astrophysics </p>
+<p>此部分为1-10章：天球/有心力学/连续光谱/SR/光物相互作用/望远镜/双星与星参数/恒星光谱分类/恒星大气/太阳</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/07/25/astro/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-提督手记 其三">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2018/01/09/ad_diary03/">提督手记 其三</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2018-01-09
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/梦境/" class="cube-excerpt-tag-link">#梦境</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>海面在熊熊燃烧。透过硝烟，不远处栖姬无喜无悲的脸在火光中若隐若现。</p>
+<p>已经到此为止了。油弹已罄，舰体大破，作为灵体显世的她也到了即将消散的时候。</p>
+<p>远处传来接连的爆炸声，驱逐舰的孩子们成功了吗……这样我也能放心离开了。</p>
+<p>她闭上眼，爆炸声不绝于耳，内心却无比平静。</p>
+<p>“提督…我…有幸和您一起…很光荣……”</p>
+<p>做了这样的梦。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2018/01/09/ad_diary03/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-提督手记 其二">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/30/ad_diary02/">提督手记 其二</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-30
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/梦境/" class="cube-excerpt-tag-link">#梦境</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>2017年1月15日 晴 星期日</p>
+<p>“司令官，第三远征舰队已经归港，东京急行任务顺利完成了。”</p>
+<p>五十铃在我面前立正，敬了一个军礼。我在寒冷的海风里紧了紧大衣，冬天的海边大概也只有军舰能若无其事地行动了，像我这种人类就应该待在暖气供应的办公室里……</p>
+<p>“辛苦了，去工厂补给吧。睦月和如月记得把大发动艇和运输罐卸下来，下一班的远征舰队要用。“我扫了一眼远征值班表，轻车熟路地给着指令。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/30/ad_diary02/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-日本語の文法ノート">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/27/Japanese/">日本語の文法ノート</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-27
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/语言/" class="cube-excerpt-tag-link">#语言</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>使用教材：标准日本语</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/27/Japanese/">阅读全文</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-提督手记 其一">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2017/12/20/ad_diary01/">提督手记 其一</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2017-12-20
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/梦境/" class="cube-excerpt-tag-link">#梦境</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>2017年12月19日 雪 星期二</p>
+<p>“虽然还没到圣诞节，已经开始下雪了啊。”</p>
+<p>办公室里的Z字旗暖炉里柴火烧的噼啪作响，我从已经趴着两个小时的办公桌上起身，走到窗前望着外面飘洒的雪花发出感慨。按这个速度，晚上大概就有驱逐舰的孩子们在打雪仗了。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2017/12/20/ad_diary01/">阅读全文</a>
+    </footer>
+</div>
+
+
+
+<ul class="cube-pagination cube-pagination-6">
+    
+    <li class="cube-pagination-prev disabled">
+        <span>« 上一页</span>
+    </li>
+    
+    
+        
+            
+            <li class="cube-pagination-index disabled">
+                <span>1</span>
+            </li>
+            
+        
+            
+            <li class="cube-pagination-index">
+                <a href="/page/2">2</a>
+            </li>
+            
+        
+    
+
+    
+    <li class="cube-pagination-next">
+        <a href="/page/2/">下一页 »</a>
+    </li>
+    
+</ul>
+
+<!--其他组件后续添加-->
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="http://wx4.sinaimg.cn/mw690/005Xteq2ly1fm7aokk73aj306c06atak.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Fin zhang</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>19</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/31/astro3/" title="天体物理笔记 三">天体物理笔记 三</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/12/hosp/" title="跑团实况-神赦医院">跑团实况-神赦医院</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/06/astro2/" title="天体物理笔记 二">天体物理笔记 二</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/27/normal_end/" title="《仙林163，汉口二十二》-写在NE通关字幕后">《仙林163，汉口二十二》-写在NE通关字幕后</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/26/18winter-event/" title="捷号決戦！邀撃、レイテ沖海戦(后篇)">捷号決戦！邀撃、レイテ沖海戦(后篇)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/admiral/">#Admiral</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/thought/">#杂学</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/physics/">#物理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/gamer/">#玩家</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/music/">#音乐</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Event/">#Event</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/梦境/">#梦境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/笔记/">#笔记</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/游戏推荐/">#游戏推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/思绪/">#思绪</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/TRPG/">#TRPG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx4.sinaimg.cn/mw690/005Xteq2gy1fmqo6rvg5pj30bp0bltfj.jpg">
+            <a href="https://doubilee.com/" target="_blank">BUWAILI</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo7t1cksj30b10azq2y.jpg">
+            <a href="https://maliut.space/" target="_blank">Mの综合研究</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo8drztlj30c60c6gly.jpg">
+            <a href="https://zhangtianxing.com/" target="_blank">Netting Sisyphus</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2018 Fin zhang
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

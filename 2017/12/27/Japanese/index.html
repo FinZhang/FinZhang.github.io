@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Fin zhang">
+    
+    
+    
+    
+    
+    
+    <title>日本語の文法ノート | Thought Fragment in Fin</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: '加载中';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about_me">关于笔者</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        <li>
+            <a class="scroll-to-top">contact author：fin@treeholeof.me</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    
+    <img src=" http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">Library of Lord El-Melloi II</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg');
+            background-repeat: no-repeat;
+            background-position: center -86px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('http://wx3.sinaimg.cn/large/005Xteq2gy1ftu1962xkuj31hc0u2hb5.jpg');
+            background-position: center -130px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">Library of Lord El-Melloi II</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '1920',
+                height: '1080'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">日本語の文法ノート</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2017-12-27
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/语言/">#语言</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+	<!-- Table of Contents -->
+
+	
+
+	<div id="toc" class="toc-article">
+
+	<strong class="toc-title">文章目录</strong>
+
+	<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Section-1"><span class="toc-text">Section 1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#lesson-1"><span class="toc-text">lesson 1</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-名-は-名-です"><span class="toc-text">1. [名] は [名] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-名-は-名-では-あぃませ"><span class="toc-text">2. [名] は [名] では あぃませ</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-名-は-名-ですか"><span class="toc-text">3. [名] は [名] ですか</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lesson-2"><span class="toc-text">lesson 2</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-これ-それ-あれ-は-名-です"><span class="toc-text">1. これ/それ/あれ は [名] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-この-その-あの-名-は-名-です"><span class="toc-text">2.この/その/あの [名] は [名] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-名-代-は-誰（だれ）ですが-何（なん）ですか"><span class="toc-text">3. [名]/[代] は　誰（だれ）ですが / 何（なん）ですか</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-名-は-どれ-どの-名-ですか"><span class="toc-text">4. [名] は どれ/どの [名] ですか</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lesson-3"><span class="toc-text">lesson 3</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-ここ-そこ-あそこ-は-名-です"><span class="toc-text">1.ここ/そこ/あそこ は [名] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-名-は-名-地点-です"><span class="toc-text">2.[名] は [名, 地点] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-名-は-どこですか"><span class="toc-text">3.[名] は どこですか</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-名-も-名-です"><span class="toc-text">4.[名] も [名] です</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-名-は-いくらですか"><span class="toc-text">5.[名] は いくらですか</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lesson-4"><span class="toc-text">lesson 4</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-”あります”和”います”"><span class="toc-text">1.”あります”和”います”</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-名-と-名"><span class="toc-text">2. [名] と [名]</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-上（うえ）-下（した）-前（まえ）-後（うし）ろ-隣（となり）-中（なか）-外（そと）"><span class="toc-text">3.上（うえ）/下（した）/前（まえ）/後（うし）ろ/隣（となり）/中（なか）/外（そと）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-疑问词-も-动（否定）"><span class="toc-text">4.疑问词 も [动（否定）]</span></a></li></ol></li></ol></li></ol>
+
+	</div>
+
+	
+
+
+        <p>使用教材：标准日本语</p>
+<a id="more"></a>
+<h3 id="Section-1"><a href="#Section-1" class="headerlink" title="Section 1"></a>Section 1</h3><h4 id="lesson-1"><a href="#lesson-1" class="headerlink" title="lesson 1"></a>lesson 1</h4><h5 id="1-名-は-名-です"><a href="#1-名-は-名-です" class="headerlink" title="1. [名] は [名] です"></a>1. [名] は [名] です</h5><p>“……是……”。“~は” 是主语部分，“~です”是谓语部分。”は”做助词提示主语时念做“wa”。</p>
+<h5 id="2-名-は-名-では-あぃませ"><a href="#2-名-は-名-では-あぃませ" class="headerlink" title="2. [名] は [名] では あぃませ"></a>2. [名] は [名] では あぃませ</h5><p>否定形式。</p>
+<h5 id="3-名-は-名-ですか"><a href="#3-名-は-名-ですか" class="headerlink" title="3. [名] は [名] ですか"></a>3. [名] は [名] ですか</h5><p>ーーはい，そうです。</p>
+<p>ーーいいえ，ちがいます。</p>
+<h4 id="lesson-2"><a href="#lesson-2" class="headerlink" title="lesson 2"></a>lesson 2</h4><h5 id="1-これ-それ-あれ-は-名-です"><a href="#1-これ-それ-あれ-は-名-です" class="headerlink" title="1. これ/それ/あれ は [名] です"></a>1. これ/それ/あれ は [名] です</h5><p>“这个/那个是……”</p>
+<p>（1）说话人和听话人相隔一段距离：距说话人较近的事物/距听话人较近的事物/距两人都较远的事物</p>
+<p>（2）说话人和听话人在同一位置：距两人较近的事物/较远的事物/更远的事物</p>
+<h5 id="2-この-その-あの-名-は-名-です"><a href="#2-この-その-あの-名-は-名-です" class="headerlink" title="2.この/その/あの [名] は [名] です"></a>2.この/その/あの [名] は [名] です</h5><p>“这个/那个……是……”</p>
+<p>これ/それ/あれ修饰名词时用この/その/あの ，表示位置和前者相同。</p>
+<h5 id="3-名-代-は-誰（だれ）ですが-何（なん）ですか"><a href="#3-名-代-は-誰（だれ）ですが-何（なん）ですか" class="headerlink" title="3. [名]/[代] は　誰（だれ）ですが / 何（なん）ですか"></a>3. [名]/[代] は　誰（だれ）ですが / 何（なん）ですか</h5><p>“……是谁/是什么？”。对尊长或对自己地位高的人用“どなた”询问</p>
+<h5 id="4-名-は-どれ-どの-名-ですか"><a href="#4-名-は-どれ-どの-名-ですか" class="headerlink" title="4. [名] は どれ/どの [名] ですか"></a>4. [名] は どれ/どの [名] ですか</h5><p>“……是哪个？/……是哪个……？”。“どれ” “どの”用于在三个以上事物时，不能确定是哪一个时用的疑问词。</p>
+<p>長島（ながしま）さんの傘（かさ）は どれ ですか。长岛君的伞是哪一把？</p>
+<h4 id="lesson-3"><a href="#lesson-3" class="headerlink" title="lesson 3"></a>lesson 3</h4><h5 id="1-ここ-そこ-あそこ-は-名-です"><a href="#1-ここ-そこ-あそこ-は-名-です" class="headerlink" title="1.ここ/そこ/あそこ は [名] です"></a>1.ここ/そこ/あそこ は [名] です</h5><p>“这里/那里是……[地点]”，三个代词表示位置同これ/それ/あれ</p>
+<h5 id="2-名-は-名-地点-です"><a href="#2-名-は-名-地点-です" class="headerlink" title="2.[名] は [名, 地点] です"></a>2.[名] は [名, 地点] です</h5><p>“……在……”，表某物存在于某地点。</p>
+<h5 id="3-名-は-どこですか"><a href="#3-名-は-どこですか" class="headerlink" title="3.[名] は どこですか"></a>3.[名] は どこですか</h5><p>“……在哪里？”</p>
+<h5 id="4-名-も-名-です"><a href="#4-名-も-名-です" class="headerlink" title="4.[名] も [名] です"></a>4.[名] も [名] です</h5><p>“も”基本相当于汉语的“也”。</p>
+<h5 id="5-名-は-いくらですか"><a href="#5-名-は-いくらですか" class="headerlink" title="5.[名] は いくらですか"></a>5.[名] は いくらですか</h5><p>“……多少钱？”，用于询问价钱</p>
+<h4 id="lesson-4"><a href="#lesson-4" class="headerlink" title="lesson 4"></a>lesson 4</h4><h5 id="1-”あります”和”います”"><a href="#1-”あります”和”います”" class="headerlink" title="1.”あります”和”います”"></a>1.”あります”和”います”</h5><p><strong>（1）[名] に [名，物/人] が あります/います</strong></p>
+<p>“……有……”，“あります”用于不具有意志的活物，“います”用于有意志的生物。疑问形式是“ありますか/いますか”</p>
+<p>あそこ に だれ が いますか。那里有谁？</p>
+<p><strong>（2）[名, 物/人] は [名, 地点] に あります/います</strong></p>
+<p>“……在……”</p>
+<p>図書館（としょかん）は どこ に ありますか。图书馆在哪儿？</p>
+<h5 id="2-名-と-名"><a href="#2-名-と-名" class="headerlink" title="2. [名] と [名]"></a>2. [名] と [名]</h5><p>”……和……“，表并列</p>
+<h5 id="3-上（うえ）-下（した）-前（まえ）-後（うし）ろ-隣（となり）-中（なか）-外（そと）"><a href="#3-上（うえ）-下（した）-前（まえ）-後（うし）ろ-隣（となり）-中（なか）-外（そと）" class="headerlink" title="3.上（うえ）/下（した）/前（まえ）/後（うし）ろ/隣（となり）/中（なか）/外（そと）"></a>3.上（うえ）/下（した）/前（まえ）/後（うし）ろ/隣（となり）/中（なか）/外（そと）</h5><p>“上面/下面/前面/后面/旁边/里面/外面”, 用法“[名] の [方位]”</p>
+<h5 id="4-疑问词-も-动（否定）"><a href="#4-疑问词-も-动（否定）" class="headerlink" title="4.疑问词 も [动（否定）]"></a>4.疑问词 も [动（否定）]</h5><p>用于完全否定。</p>
+<p>教室（きょうしつ）に だれ も いません。教室里谁也没有。</p>
+<p>冷蔵庫（れいぞうこ）に なに も ありません。冰箱里什么也没有。</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2017/12/30/ad_diary02/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                提督手记 其二
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2017/12/20/ad_diary01/">
+                提督手记 其一
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="搜索" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="搜索" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <style>
+        @media(min-width: 768px) {
+            .cube-author img {
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+        }
+        @media(max-width: 1120px) and (min-width: 768px) {
+            .cube-author img {
+                width: 128px;
+                height: 128px;
+            }
+        }
+        @media(min-width: 1120px) {
+            .cube-author img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+    
+    <img src="http://wx4.sinaimg.cn/mw690/005Xteq2ly1fm7aokk73aj306c06atak.jpg" alt="avatar" class="cube-avatar">
+    
+    
+    <span>Fin zhang</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>19</span>文章</a>
+        <a class="count tags"><span>10</span>标签</a>
+        <a class="count categories"><span>5</span>分类</a>
+    </div>
+</div>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>近期文章</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/31/astro3/" title="天体物理笔记 三">天体物理笔记 三</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/12/hosp/" title="跑团实况-神赦医院">跑团实况-神赦医院</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/08/06/astro2/" title="天体物理笔记 二">天体物理笔记 二</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/27/normal_end/" title="《仙林163，汉口二十二》-写在NE通关字幕后">《仙林163，汉口二十二》-写在NE通关字幕后</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2018/07/26/18winter-event/" title="捷号決戦！邀撃、レイテ沖海戦(后篇)">捷号決戦！邀撃、レイテ沖海戦(后篇)</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">分类</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/admiral/">#Admiral</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/thought/">#杂学</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/physics/">#物理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/gamer/">#玩家</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/music/">#音乐</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">标签云</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Event/">#Event</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/梦境/">#梦境</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/笔记/">#笔记</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/游戏推荐/">#游戏推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/历程/">#历程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/思绪/">#思绪</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/TRPG/">#TRPG</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>友情链接</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx4.sinaimg.cn/mw690/005Xteq2gy1fmqo6rvg5pj30bp0bltfj.jpg">
+            <a href="https://doubilee.com/" target="_blank">BUWAILI</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo7t1cksj30b10azq2y.jpg">
+            <a href="https://maliut.space/" target="_blank">Mの综合研究</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="http://wx3.sinaimg.cn/mw690/005Xteq2gy1fmqo8drztlj30c60c6gly.jpg">
+            <a href="https://zhangtianxing.com/" target="_blank">Netting Sisyphus</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2018 Fin zhang
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
