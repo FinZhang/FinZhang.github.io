@@ -185,7 +185,7 @@
 <p>物理：</p>
 <p>对称性常识备忘：未完成，准备找时间切英语继续写，之前写review深感熟练度低下。</p>
 <p>天体物理笔记：正课开始，自学笔记可能停更。</p>
-<p>金属污染白矮星的文献综述：可能会发上来撑门面（我好菜）。</p>
+<p>金属污染白矮星的文献综述：<del>可能会发上来撑门面</del> 已完成（2.15更新）。</p>
 <p>杂学：</p>
 <p>读《社会契约论》：<del>书在家里，有可能弃坑</del> 填坑无限期延后（2.15更新）</p>
 <p>日语笔记：<del>书在家里，有可能弃坑</del> 填坑无限期延后（2.15更新）</p>
@@ -377,7 +377,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/admiral/">#Admiral</a>
         </div>
         
@@ -397,7 +397,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/music/">#音乐</a>
         </div>
         
@@ -413,13 +413,8 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Event/">#Event</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/评与测/">#评与测</a>
         </div>
         
         
@@ -430,6 +425,11 @@
         
         <div class="cube-box ">
             <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/评与测/">#评与测</a>
         </div>
         
         
@@ -459,16 +459,16 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/音乐推荐/">#音乐推荐</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/历程/">#历程</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/音乐推荐/">#音乐推荐</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/思绪/">#思绪</a>
         </div>
         
@@ -524,6 +524,22 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src="/js/script.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
-<div class="cube-loading out"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

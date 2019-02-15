@@ -641,7 +641,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/thought/">#杂学</a>
         </div>
         
@@ -651,12 +651,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/gamer/">#玩家</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/music/">#音乐</a>
         </div>
         
@@ -678,17 +678,17 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/评与测/">#评与测</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/你反省吧/">#你反省吧</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/语言/">#语言</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/评与测/">#评与测</a>
         </div>
         
         
@@ -712,8 +712,13 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/建站/">#建站</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/历程/">#历程</a>
         </div>
         
         
@@ -722,12 +727,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/历程/">#历程</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/思绪/">#思绪</a>
         </div>
         
@@ -783,6 +783,22 @@ Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a
 <script src="/js/script.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 <!-- endinject -->
-<div class="cube-loading out"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div class="cube-loading out"></div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
