@@ -10,7 +10,7 @@
     
     
     
-    <title>标签: 音乐推荐 | Thought Fragment in Fin</title>
+    <title>Live2D制作指东 | Thought Fragment in Fin</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -97,10 +97,10 @@
 </nav>
     <header class="cube-header" id="cube-header">
     
-    <img src=" https://s1.ax1x.com/2020/10/26/BnVUwF.jpg " alt="头部背景图片">
+    <img src=" https://s1.ax1x.com/2020/10/26/BnVrS1.jpg " alt="头部背景图片">
     
     <div class="cube-type">
-        <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+        <span class="cube-typed-title">Library of Lord El-Melloi II</span>
         <span class="cube-typed-cursor">|</span>
     </div>
     
@@ -120,7 +120,7 @@
             -webkit-filter: blur(5px);
         
             z-index: -1;
-            background-image: url('https://s1.ax1x.com/2020/10/26/BnVUwF.jpg');
+            background-image: url('https://s1.ax1x.com/2020/10/26/BnVrS1.jpg');
             background-repeat: no-repeat;
             background-position: center -86px;
             background-size: cover;
@@ -129,14 +129,14 @@
 
         header.cube-background.cube-header-background {
             visibility: hidden;
-            background-image: url('https://s1.ax1x.com/2020/10/26/BnVUwF.jpg');
+            background-image: url('https://s1.ax1x.com/2020/10/26/BnVrS1.jpg');
             background-position: center -130px;
         }
     </style>
     <header class="cube-background cube-header-background">
         
         <div class="cube-type">
-            <span class="cube-typed-title">Corleone Observatory of the shining star</span>
+            <span class="cube-typed-title">Library of Lord El-Melloi II</span>
             <span class="cube-typed-cursor">|</span>
         </div>
         
@@ -156,29 +156,202 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">Live2D制作指东</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">音乐推荐</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2017/10/16/music_recommend_1-5/">日始之音 Vol.1~5</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-11-21
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/live2D/">#live2D</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+	<!-- Table of Contents -->
+
+	
+
+
+        <p>一篇（对其他人可能完全没有用的）live2D制作<del>教程</del>备忘。原则上你只需要一张静态图和<del>当死宅多年的</del>想象力就可以让任何角色动起来，但具体实现还是有不少约束（特别是你不会画画的情况下）</p>
+<a id="more"></a>
+<p>这是一个基本写给自己的备忘录，如果读者是刚开始学，建议先看一遍下方的视频</p>
+<p>基本盘：</p>
+<p><a href="https://www.youtube.com/playlist?list=PLhha8OGApHGPdtbK3gmAEMyk2d2icpdtj" target="_blank" rel="noopener">Live2D Tutorial 2016 (non-artist)</a></p>
+<p>头发，颈部，身体</p>
+<p><a href="https://www.youtube.com/watch?v=-tYx-Rpz3Nc&amp;list=PLhha8OGApHGM4B8gk7uaqu_LjXAeSuRKP&amp;index=15" target="_blank" rel="noopener">Live2D Cubism 2.0 tutorial (2015) - Ep.10 “Hair”</a></p>
+<p><a href="https://www.youtube.com/watch?v=R46IMQf99VU&amp;list=PLhha8OGApHGM4B8gk7uaqu_LjXAeSuRKP&amp;index=17" target="_blank" rel="noopener">Live2D Cubism 2.0 tutorial (2015) - Ep.11 “Neck, Body, L2DViewer, Dev News”</a></p>
+<p>物理效果</p>
+<p><a href="https://docs.live2d.com/cubism-editor-manual/physical-operation-setting/?locale=en_us" target="_blank" rel="noopener">How to set physical operation</a></p>
+<h4 id="PS部分"><a href="#PS部分" class="headerlink" title="PS部分"></a>PS部分</h4><p>​    *注意开始前背景扣成透明。大部分元件都需要多延伸一部分（多扣或者自己填色），导出前注意先手动移动确认每个部分都没有问题！<br>​     图层从下到上为:</p>
+<ul>
+<li><p>可置于背后的附属装饰</p>
+<pre><code>- 最好是可以遵循后发逻辑的，否则需要参数另外调整
+</code></pre></li>
+<li><p>后发</p>
+<pre><code>- 把握轮廓，记得描边和填涂中央区域。最后完成时调整前发和脸的位置确认露出的后发部分无违和
+</code></pre></li>
+<li><p>脖子</p>
+<pre><code>- 下端阶段注意截断位置，上端不要有边缘。上下端额外延伸填涂一部分，注意阴影的合理性
+</code></pre></li>
+<li><p>身体</p>
+<pre><code>- 与脖子连接处延伸一段距离
+</code></pre></li>
+<li><p>脸部</p>
+<pre><code>- 记得五官涂干净（面部颜色统一），下半部（露出来的部分）需要描边。刘海下方用阴影颜色填涂。上部分不要延伸过多！
+</code></pre></li>
+<li><p>耳朵</p>
+<pre><code>- 看着扣就好，可以延伸一部分但其实非必要，如果麻烦可以就只扣。
+</code></pre></li>
+<li><p>鼻子</p>
+<pre><code>- 就扣完事了
+</code></pre></li>
+<li><p>嘴</p>
+<pre><code>- 每个表情的嘴型准备三个（开，半开，闭），每个嘴型均需确认没有违和感且能自然转换
+</code></pre></li>
+<li><p>眼睛</p>
+<pre><code>- 每只眼睛都需要：眉毛（eyesbrow），睫毛（eyeslash），眼白，瞳孔（iris），高光。睫毛准备三个状态，眉毛数量按表情决定（或者直接到时候cubism里调整）
+</code></pre></li>
+<li><p>前发</p>
+<pre><code>- 通常分为左右侧发和刘海(bangs)。注意刘海两侧多扣，侧发靠内的一侧多扣，外侧稍微淡化一下边缘（以作为边缘和内部均违和感小为宜）
+</code></pre></li>
+</ul>
+<h4 id="Model结构"><a href="#Model结构" class="headerlink" title="Model结构"></a>Model结构</h4><p>（元素-前缀，<strong>deformer</strong>无前缀，括号内是该条目所应用的keyforms）</p>
+<ul>
+<li><p><strong>body deformer</strong> (body Y - body Z 身体绕垂直轴转-绕画面轴转，注意这个Y和Angle定义有差异…）</p>
+<ul>
+<li>-body （Breathing）</li>
+</ul>
+</li>
+<li><p><strong>rotation deformer</strong>（Angle Z 左右歪头）</p>
+<ul>
+<li><p><strong>deformer of neck 1</strong> （body Y - body Z 主要是配合body deformer 的 workaround）</p>
+<ul>
+<li><strong>neck def</strong> （Angle X - Angle Y 配合头部的这两个参数的调整）<ul>
+<li>-neck (Angle Z 配合rotation deformer)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>head deformer</strong> （body Y - body Z 主要是配合body deformer 的 workaround）</p>
+<ul>
+<li><p>-earR，earL （Angle X - Angle Y 配合头部的这两个参数的调整）</p>
+</li>
+<li><p><strong>sideL，sideR</strong> （Angle X - Angle Y 同上）</p>
+<ul>
+<li>-sideL，-sideR (Angle Z 配合rotation deformer，注意额外重力偏移。Hair move side：用于添加物理效果，左右发对于同一参数的摆动方向一致)</li>
+</ul>
+</li>
+<li><p><strong>fronthair</strong> （Angle X - Angle Y 同上）</p>
+<ul>
+<li>-bangs （Hair move front：同上，注意方向和hair move side一致）</li>
+</ul>
+</li>
+<li><p><strong>face deformer</strong> （Angle X - Angle Y 同上）</p>
+<ul>
+<li>-nose，-face （无参数）</li>
+<li><strong>righteye，lefteye</strong>（无参数）<ul>
+<li>-browsL，browR （mouth form-mouth open 一个简单实现表情的work around）</li>
+<li>-eyeslashL123，eyeslashR123 （EyeR，EyeL open：具体实现参见3）</li>
+<li>-eyewhiteL-mask，eyewhiteR-mask（EyeR，EyeL open：用于蒙版，参见3）</li>
+<li>-eyewhiteL，eyewhiteR （无参数）</li>
+<li><strong>IrisR,，IrisL</strong> （Eyeball X - Eyeball Y 不用多解释）<ul>
+<li>-irisR，irisL （EyeR，EyeL open：用于调整闭眼时的瞳孔变形）</li>
+<li><strong>highlight defL，highlight defR</strong> （Eyeball X - Eyeball Y 瞳孔移动时高光的移动，效果不是很明显）<ul>
+<li>-highlightL，highlightR （EyeR，EyeL open：用于调整闭眼时的高光移动）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>mouth</strong> （无参数）<ul>
+<li>-mouthH123，-mouthS123（mouth form-mouth open，实现参见3）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>backhair</strong> （Angle X - Angle Y 同上）</p>
+<ul>
+<li><p>-backhair （Angle Z 配合rotation deformer，注意额外重力偏移。Hair move back：用于添加物理效果，注意方向和hair move side一致）</p>
+</li>
+<li><p>-p0，-p1，-p2，-p3…（丝带等需要添加物理效果的自行添加参数提供摆动自由度，注意方向一致。其他元素无参数）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="简单work-flow"><a href="#简单work-flow" class="headerlink" title="简单work flow"></a>简单work flow</h4><ul>
+<li><p>先做face deformer的angleXY（即先给face元素创建一个face deformer作为基底），随后做eyeball（eye本身只需要跟着face deformer），即两个iris的deformer。</p>
+</li>
+<li><p>睫毛eyeslash</p>
+<ul>
+<li>具体操作：令开眼，半闭，闭眼三个状态的睫毛在 开眼1 半闭0.5 闭眼0 三个keyforms上的可见度分别为100-0-0，0-100-0，0-0-100，同时确保他们全程都变形到同一位置减少违和感，更具体的操作参见 <a href="https://www.youtube.com/watch?v=G7uOpVkwPtM&amp;list=PLhha8OGApHGPdtbK3gmAEMyk2d2icpdtj&amp;index=14" target="_blank" rel="noopener">How to swap eye textures for blinking (2016 Ep.13)</a> （这种程度的解释我觉得我自己应该能回想起来了……）</li>
+</ul>
+</li>
+<li><p>复制眼白为mask，然后令其随eye open参数逐渐压缩变小。将其id复制给-iris，-highlight，-eyewhite当cliping ID实现眨眼</p>
+</li>
+<li><p>nose基本就是跟着face deformer走（和face一样）</p>
+</li>
+<li><p>mouth的状态过度是和睫毛的处理方法是一样的，如果加入mouth form作为表情参数的话需要注意两个维度（四种切换方式）的过渡自然性！</p>
+</li>
+<li><p>ear要额外根据两个angle调整来产生透视效果，在其元素上调整即可</p>
+</li>
+<li><p>hair的四个部分各自准备一个deformer用于angleXY，自己的元素则负责提供物理效果自由度的hair move xxx和模拟重力的angle Z。这一部分需要严格调整检查确保变化过程和变化结尾点均不违和！</p>
+</li>
+<li><p>上面neck的三级主要就是为了参数不超两个的上限……不多解释，根据对应表调整就完事了</p>
+</li>
+<li><p>以上全部完成后（记得创建head deformer）把head和neck放进一个rotation deformer里做angle Z。大约左右各旋转15度。旋转轴在脖子中心比较好</p>
+</li>
+<li><p>另外新建body deformer负责body的两个旋转和呼吸</p>
+<ul>
+<li>细节：绕垂直轴转Y ，转入画面的一侧水平压缩（需要的话也垂直压缩降低肩部），转出的一侧水平压缩并抬高肩部，头往相同侧微微平移。绕画面轴转Z，抬高/降低对应肩，需要时可以拉伸变形，头往相反方向微侧可以增加真实感。呼吸，吸气段微微放大整个身体，身体前胸部分稍微拉伸扩大，呼气端不变即可（不要过度！确认重复变化时不会影响整体观感！）</li>
+</ul>
+</li>
+<li><p>最后开random pose检查整体效果</p>
+</li>
+</ul>
+<h4 id="操作tips"><a href="#操作tips" class="headerlink" title="操作tips"></a>操作tips</h4><ul>
+<li>无论是deformer还是元素，插入keyforms都可以用parameter面板上的快捷键</li>
+<li>创建rotation deformer用第三个按钮（第二个不能调旋转轴，没找到负责移动的快捷键，为了省事就用第三个了）</li>
+<li>为keyforms做变形时，简单微调可以用绿十字和灰方框四角实现，如果要多自由度则最好生成mesh（auto就差不多）。然后自己手动调节点（不推荐）/用deform path edit（右侧三个的第一个）左键创建点（alt+左键删点）来生成变形曲线（我不算充分理解，但基本可以这么用），然后切回鼠标模式可以拉拽点来实现自然变形。</li>
+<li>设置物理效果时，单摆摆长基本和发长保持一致（？）记得两个body 参数也要进入input quantity 中</li>
+<li>motion编辑界面使用的work around：右下角红点录像然后关闭，随后左上角选项切animation，复制scene，随后选中在左上角切到form animation。时间轴模式默认是一秒三十帧。点时间轴左侧的模型行会有参数调节界面。选择一帧再调节参数就相当于插入了keyframe（操作就类似于模型编辑keyforms）拉动时间轴后面的灰色分界线是调节总动画时长（记得紫线也拉上），下面的黄线是模型出现时间，简单来说就是拉满。keyframe在蓝色全选模式下可以拖动（别稀里糊涂只拖了一个参数！）。</li>
+</ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML" async></script>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2020/03/10/critique/">
+                Does the small scale inhomogeneity affect the large scale cosmology?
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -334,12 +507,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/admiral/">#Admiral</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/thought/">#杂学</a>
         </div>
         
@@ -354,7 +527,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/music/">#音乐</a>
         </div>
         
@@ -410,7 +583,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/建站/">#建站</a>
         </div>
         
@@ -420,12 +593,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/评与测/">#评与测</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/live2D/">#live2D</a>
         </div>
         
@@ -440,7 +613,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/归档/">#归档</a>
         </div>
         
