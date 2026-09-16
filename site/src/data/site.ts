@@ -6,7 +6,7 @@ import prodick from "../assets/fellows/prodick.jpg";
 export const SITE = {
   title: "Carillon Observatory of the Shining Light",
   author: "Fin Zhang",
-  role: "Keeper of the Carillon",
+  role: "Keeper of the Observatory",
   est: "Est. MMXIV",
   email: "shininglight441@gmail.com",
   bio: "天体物理博士，已转行。什么都想学一点，但啥都不精；什么都会思考一点，但想法都不成熟。",

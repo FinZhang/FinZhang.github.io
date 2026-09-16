@@ -3,8 +3,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Masthead from "../components/Masthead.astro";
 import SearchBox from "../components/SearchBox.astro";
 import YearBars from "../components/YearBars.astro";
+import AuthorCard from "../components/AuthorCard.astro";
+import WorldCard from "../components/WorldCard.astro";
 import { CATEGORIES } from "../data/site";
-import { entriesLabel, fmtDate, getPosts, groupByYear, isLatin, postUrl, toRoman } from "../lib/posts";
+import { categoryUrl, entriesLabel, fmtDate, getPosts, groupByYear, isLatin, postUrl, toRoman } from "../lib/posts";
 
 const posts = await getPosts();
 const groups = groupByYear(posts);
@@ -52,7 +54,7 @@ const span = `${toRoman(Number(groups.at(-1)!.year))} — ${toRoman(Number(group
         {
           groups.map((g) => (
             <div class="tl-group" id={g.year} data-group={g.year}>
-              <div class="tl-year">
+              <div class="tl-year" data-year-label>
                 <span class="tl-year-num">{g.year}</span>
                 <span class="year-count" data-group-count>{entriesLabel(g.posts.length)}</span>
               </div>
@@ -83,9 +85,14 @@ const span = `${toRoman(Number(groups.at(-1)!.year))} — ${toRoman(Number(group
 
     <aside class="inner-aside">
       <SearchBox />
-      <div class="side-block side-sticky">
-        <h3 class="side-title">Jump to year 年份</h3>
-        <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} links />
+      <div class="side-sticky">
+        <div class="side-block">
+          <h3 class="side-title">Jump to year 年份</h3>
+          <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} links />
+          <a class="back-link side-link" href={categoryUrl(CATEGORIES[0])}><span class="back-arrow">←</span> Category</a>
+        </div>
+        <AuthorCard compact />
+        <WorldCard short />
       </div>
     </aside>
   </div>

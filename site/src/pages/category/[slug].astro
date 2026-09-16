@@ -24,7 +24,7 @@ const groups = groupByYear(posts);
 <BaseLayout title={`${cat.cn} · ${cat.en}`}>
   <Masthead crumbs={[{ label: `${cat.cn} · ${cat.short}`, current: true }]} />
 
-  <div class="inner-layout" data-filter-root>
+  <div class="inner-layout" data-filter-root data-bars="shown">
     <main class="inner-main">
       <CategoryGrid active={cat.slug} />
 
@@ -63,12 +63,12 @@ const groups = groupByYear(posts);
       <section class="year-list">
         {
           groups.map((g) => (
-            <div class="year-group" data-group={g.year}>
-              <div class="year-label">
+            <div class="year-group" id={g.year} data-group={g.year}>
+              <div class="year-label" data-year-label>
                 <span class="year-num">{g.year}</span>
                 <span class="year-count" data-group-count>{entriesLabel(g.posts.length)}</span>
               </div>
-              <div>
+              <div class="year-rows">
                 {g.posts.map((p) => (
                   <PostRow post={p} meta={p.data.tags.join(" · ")} values={p.data.tags.join("|")} />
                 ))}
@@ -83,12 +83,15 @@ const groups = groupByYear(posts);
 
     <aside class="inner-aside">
       <SearchBox placeholder="在本栏中搜索 / Search" scope={cat.cn} />
-      <div class="side-block">
-        <h3 class="side-title">By year 年度分布</h3>
-        <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} />
+      <div class="side-sticky">
+        <div class="side-block">
+          <h3 class="side-title">Jump to year 年份</h3>
+          <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} links />
+          <a class="back-link side-link side-link--end" href="/archive/">Full timeline <span class="back-arrow">→</span></a>
+        </div>
+        <AuthorCard compact />
+        <WorldCard short />
       </div>
-      <AuthorCard compact />
-      <WorldCard short />
     </aside>
   </div>
 </BaseLayout>

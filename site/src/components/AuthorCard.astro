@@ -4,7 +4,7 @@ import avatar from "../assets/avatar.jpg";
 import { SITE } from "../data/site";
 
 interface Props {
-  /** Category-page variant: "Keeper" heading, smaller plate, no bio. */
+  /** Category-page variant: "Author" heading, smaller plate, no bio. */
   compact?: boolean;
 }
 
@@ -14,7 +14,7 @@ const { compact = false } = Astro.props;
 {
   compact ? (
     <div class="side-block">
-      <h3 class="side-title">Keeper</h3>
+      <h3 class="side-title">Author</h3>
       <div class="author-head author--compact">
         <Image class="plate author-avatar" src={avatar} alt={SITE.author} width={120} height={120} />
         <div class="author-names">
