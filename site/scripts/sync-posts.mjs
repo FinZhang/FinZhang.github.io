@@ -2,7 +2,7 @@
 // normalising front matter so the site never has to deal with folder names or legacy fields.
 //
 //   posts/<name>.md                -> src/content/posts/<slug>/index.md
-//   posts/<name>/index.md + images -> src/content/posts/<slug>/index.md + images
+//   posts/<name>/index.md + images -> src/content/posts/<slug>/index.md + images (max 2000px wide)
 //   PDFs referenced by <embed>     -> public/files/<slug>/<file>.pdf  (kind: pdf)
 //
 // It runs as an Astro integration (see astro.config.mjs): once whenever Astro starts, and during
@@ -13,6 +13,7 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import matter from "gray-matter";
 import { PDFDocument } from "pdf-lib";
+import sharp from "sharp";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.resolve(root, "..", "posts");
@@ -34,6 +35,44 @@ function copyIfChanged(from, to) {
   }
   fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.copyFileSync(from, to);
+  return true;
+}
+
+// Images wider than this are scaled down when copied. The text column is 700px, so this is enough
+// for high-density screens and for zooming in the image viewer. Astro turns the copy into WebP at
+// build time; the originals in ../posts are never touched.
+const MAX_IMAGE_WIDTH = 2000;
+const RESIZABLE = new Set([".jpg", ".jpeg", ".png", ".webp"]);
+
+/** Width as displayed, i.e. after the EXIF orientation is applied. */
+const shownWidth = (meta) => ((meta.orientation ?? 1) >= 5 ? meta.height : meta.width);
+
+/**
+ * Copies an image, scaling it down to MAX_IMAGE_WIDTH if it is wider. The copy gets the source's
+ * mtime, so an unchanged source whose copy is already narrow enough is skipped.
+ * Returns whether it wrote.
+ */
+async function copyImageIfChanged(from, to) {
+  const s = fs.statSync(from);
+  if (fs.existsSync(to) && Math.abs(fs.statSync(to).mtimeMs - s.mtimeMs) < 1) {
+    const meta = await sharp(to).metadata().catch(() => null);
+    if (!meta || shownWidth(meta) <= MAX_IMAGE_WIDTH) return false;
+  }
+  fs.mkdirSync(path.dirname(to), { recursive: true });
+  const meta = await sharp(from).metadata().catch(() => null);
+  if (meta && shownWidth(meta) > MAX_IMAGE_WIDTH) {
+    // High quality: Astro compresses it again when it makes the WebP.
+    await sharp(from)
+      .rotate()
+      .resize({ width: MAX_IMAGE_WIDTH })
+      .keepIccProfile()
+      // (For PNG, a quality option would reduce it to a palette, so PNG keeps its defaults.)
+      .toFormat(meta.format, meta.format === "png" ? {} : { quality: 92 })
+      .toFile(to);
+  } else {
+    fs.copyFileSync(from, to);
+  }
+  fs.utimesSync(to, s.atime, s.mtime);
   return true;
 }
 
@@ -172,7 +211,8 @@ export async function syncPosts({ assets = true } = {}) {
     if (assetDir) {
       for (const f of fs.readdirSync(assetDir)) {
         if (f === "index.md" || f.toLowerCase().endsWith(".pdf")) continue;
-        if (copyIfChanged(path.join(assetDir, f), path.join(dest, f))) changed.push(path.join(entry.name, f));
+        const copy = RESIZABLE.has(path.extname(f).toLowerCase()) ? copyImageIfChanged : copyIfChanged;
+        if (await copy(path.join(assetDir, f), path.join(dest, f))) changed.push(path.join(entry.name, f));
       }
     }
   }
