@@ -2,7 +2,7 @@
 title: "The Metal Polluted White Dwarfs and their Circumstellar Disks"
 date: 2019-02-15
 categories: "研究"
-tags: ["Work"]
+tags: ["WORK"]
 url_suffix: "pwd"
 ---
 

@@ -68,6 +68,15 @@ a:hover { color: var(--color-accent-600); }
 .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-accent); flex: none; }
 
 /* ── Masthead ─────────────────────────────────────────────── */
+/* Lora 500 only for the home breadcrumb line: importing the whole weight would also thicken every
+   other Lora text that asks for 500 and currently falls back to 400. Latin glyphs are enough here. */
+@font-face {
+  font-family: "Lora Masthead";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("@fontsource/lora/files/lora-latin-500-normal.woff2") format("woff2");
+}
 .masthead { padding-top: 56px; }
 .masthead-title-row { display: flex; justify-content: center; padding: 22px 0 14px; }
 .masthead-title {
@@ -107,8 +116,15 @@ a.masthead-title:hover { color: var(--color-accent-700); }
 .masthead-meta .is-current { color: var(--color-text); }
 .masthead-meta .is-title { font-family: var(--f-cn); letter-spacing: 0.14em; text-transform: none; }
 .masthead--home .masthead-title-row { padding: 26px 0 18px; }
-.masthead--home .masthead-title { font-size: min(28px, var(--title-fit)); }
-.masthead--home .masthead-meta { gap: 18px; padding-bottom: 20px; }
+/* The home nameplate is set tighter, larger and heavier: 30.0em wide at this tracking. */
+.masthead--home .masthead-title {
+  --title-fit: calc((100vw - 160px) / 30.2);
+  margin-left: 0.16em;
+  font-size: min(34px, var(--title-fit));
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+.masthead--home .masthead-meta { gap: 18px; padding-bottom: 20px; font-family: "Lora Masthead", var(--f-en); font-size: 12px; font-weight: 500; }
 
 /* ── Homepage grid ────────────────────────────────────────── */
 .home-layout {
@@ -210,7 +226,7 @@ a.masthead-title:hover { color: var(--color-accent-700); }
 .page-head-text { display: flex; flex-direction: column; gap: 8px; }
 .kicker { font-family: var(--f-ui); font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-neutral-800); font-weight: 500; }
 .page-head-cn { margin: 0; font-family: var(--f-cn); font-size: 33px; font-weight: 500; letter-spacing: 0.2em; line-height: 1.2; }
-.page-head-en { font-family: var(--f-ui); font-size: 15px; letter-spacing: 0.14em; color: var(--color-neutral-900); font-weight: 500; }
+.page-head-en { font-family: var(--f-ui); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-neutral-900); font-weight: 500; }
 .page-head-count { font-family: var(--f-ui); font-size: 46.5px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-accent-700); font-feature-settings: "tnum"; line-height: 1; }
 
 .filter { display: flex; flex-direction: column; gap: 12px; }
@@ -317,7 +333,7 @@ a.masthead-title:hover { color: var(--color-accent-700); }
 .plate.author-avatar { border-width: 3px; }
 .author-names { display: flex; flex-direction: column; gap: 4px; padding-top: 4px; }
 .author-name { font-family: var(--f-ui); font-size: 20px; letter-spacing: 0.08em; line-height: 1.4; font-weight: 500; }
-.author-role { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-neutral-800); font-weight: 500; }
+.author-role { font-size: 10.5px; letter-spacing: 0.16em; color: var(--color-neutral-800); font-weight: 500; }
 .author-bio { margin: 0; font-family: var(--f-cn); font-size: calc(13px * var(--text-scale)); font-weight: 400; line-height: 1.9; color: var(--color-neutral-900); text-align: justify; }
 .author--compact .author-avatar { width: 60px; height: 60px; }
 .author--compact .author-names { padding-top: 3px; }
@@ -534,8 +550,9 @@ button.pdf-action:hover { color: var(--color-accent-700); }
 .site-footer { padding-bottom: 48px; }
 .site-footer-rule { height: 1px; background: var(--color-divider); margin-bottom: 20px; }
 .site-footer-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 20px; flex-wrap: wrap; font-family: var(--f-ui); color: var(--color-neutral-800); font-weight: 500; }
-.site-footer-copy { font-size: 12.5px; letter-spacing: 0.2em; font-feature-settings: "tnum"; font-weight: 500; }
-.site-footer-contact { font-size: 11.5px; letter-spacing: 0.14em; font-weight: 500; }
+.site-footer-copy { font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; font-feature-settings: "tnum"; font-weight: 500; }
+.site-footer-contact { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
+.site-footer-contact a { text-transform: none; }
 .site-footer-contact a:hover { color: var(--color-accent); }
 
 /* ── Floating controls ────────────────────────────────────── */
@@ -707,6 +724,7 @@ button.pdf-action:hover { color: var(--color-accent-700); }
   .masthead { padding-top: 34px; }
   .masthead-title { font-size: 16px; letter-spacing: 0.24em; white-space: normal; }
   .masthead--home .masthead-title { font-size: 19px; }
+  .masthead--home .masthead-meta { gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; }
   .cat-cell, .cat-grid--switch .cat-cell { padding: 16px 14px; }
   .cat-cn { font-size: 19px; }
   .page-head-cn { font-size: 27.5px; }

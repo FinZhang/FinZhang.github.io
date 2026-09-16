@@ -2,7 +2,7 @@
 title: "Live2D制作指东"
 date: 2020-11-21
 categories: "杂学"
-tags: ["Live2D"]
+tags: ["LIVE2D"]
 url_suffix: "live2d"
 ---
 

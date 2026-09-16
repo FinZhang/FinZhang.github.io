@@ -6,7 +6,7 @@ interface Props {
   class?: string;
 }
 
-const { placeholder = "搜索文章 / Search", scope, class: className } = Astro.props;
+const { placeholder = "搜索文章 / SEARCH", scope, class: className } = Astro.props;
 ---
 
 <div class:list={["search", className]} data-search data-scope={scope} role="search">

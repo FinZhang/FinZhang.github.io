@@ -2,7 +2,7 @@
 title: "期间限定海域作战记录合集"
 date: 2021-11-28
 categories: "玩家"
-tags: ["Kancolle Event"]
+tags: ["KANCOLLE EVENT"]
 url_suffix: "kancolle_event"
 ---
 

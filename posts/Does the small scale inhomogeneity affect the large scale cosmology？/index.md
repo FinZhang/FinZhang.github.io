@@ -2,7 +2,7 @@
 title: "Does the small scale inhomogeneity affect the large scale cosmology?"
 date: 2020-03-10
 categories: "研究"
-tags: ["Work"]
+tags: ["WORK"]
 url_suffix: "critique"
 ---
 

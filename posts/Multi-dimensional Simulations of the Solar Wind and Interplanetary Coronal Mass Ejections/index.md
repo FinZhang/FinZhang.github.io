@@ -2,7 +2,7 @@
 title: "Multi-dimensional Simulations of the Solar Wind and Interplanetary Coronal Mass Ejections"
 date: 2020-01-27
 categories: "研究"
-tags: ["Work"]
+tags: ["WORK"]
 url_suffix: "sw-cme"
 ---
 
