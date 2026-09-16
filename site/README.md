@@ -1,6 +1,6 @@
 # Carillon Observatory of the Shining Light · 站点
 
-按 `../design_handoff_carillon_blog` 的设计实现的静态博客（Astro 7）。文章仍然写在 `../posts`，站点只负责读取和排版。
+Carillon Observatory 的静态博客站点（Astro 7）。文章写在 `../posts`，站点只负责读取和排版。头像、世界地图、友链图标在 `src/assets/`，要换图替换那里的文件即可。
 
 ```bash
 npm install
@@ -14,13 +14,13 @@ npm run build    # 输出到 dist/，可直接部署到 GitHub Pages（public/CN
 
 ## 页面
 
-| 路由 | 内容 |
-| --- | --- |
-| `/` | 首页：分类、最新 5 篇、搜索、作者、世界观、友链 |
-| `/category/institute` · `library` · `player` · `archives` | 研究 · 杂学 · 玩家 · 生活 |
-| `/archive/` | 时间线，可按分类筛选 |
-| `/post/<url_suffix>/` | 文章；带 PDF 的文章使用 PDF 版式 |
-| `/search.json` | 搜索索引（标题 + 标签 + 正文） |
+| 路由                                                        | 内容                        |
+| --------------------------------------------------------- | ------------------------- |
+| `/`                                                       | 首页：分类、最新 5 篇、搜索、作者、世界观、友链 |
+| `/category/institute` · `library` · `player` · `archives` | 研究 · 杂学 · 玩家 · 生活         |
+| `/archive/`                                               | 时间线，可按分类筛选                |
+| `/post/<url_suffix>/`                                     | 文章；带 PDF 的文章使用 PDF 版式     |
+| `/search.json`                                            | 搜索索引（标题 + 标签 + 正文）        |
 
 ## 写文章
 
@@ -48,7 +48,7 @@ url_suffix: "astro"       # 文章网址；缺省时为 post-YYYYMMDD
 
 用 `trpg` 代码块书写，不再需要手写 HTML 和颜色表：
 
-````md
+```md
 ```trpg
 @KP 21:45:32
 =====分割线=====
@@ -58,7 +58,7 @@ url_suffix: "astro"       # 文章网址；缺省时为 post-YYYYMMDD
 @拉尔夫
 （行首真的要写 @ 时，用 \@ 转义）
 ```
-````
+```
 
 - `@名字` 开始一条发言，后面可跟时间（`21:45`、`21:45:32` 或 `2022-01-08 10:36`）。
 - 被 `===` 包住的一行会排成带标签的分隔线。
