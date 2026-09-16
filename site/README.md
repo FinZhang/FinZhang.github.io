@@ -72,6 +72,23 @@ url_suffix: "astro"       # 文章网址；缺省时为 post-YYYYMMDD
 - `$...$` / `$$...$$` 公式由 KaTeX 在构建时渲染，连续的公式合并为一个公式块。
 - 写入 `<embed src="xxx.pdf">` 的文章自动成为 PDF 文章，页数和大小在同步时读取（也可在 front matter 里写 `kind: pdf`、`file`、`pages`、`sizeBytes`）。PDF 由站内阅读器（PDF.js）显示：翻页、缩放；页面保持原色，检索和复制文字请用“New window”打开浏览器自带阅读器。
 
+### 加密文章
+
+在 front matter 里加三行，读者须输入密码才能看到正文：
+
+```yaml
+encrypt: true
+hint: "日记的日期（四位数字）"   # 可选，显示在密码框上方
+password: "1219"
+```
+
+- 同步时（`npm run dev` / `npm run build` / `npm run sync`）文章会按站点同样的方式渲染，连同图片一起加密（PBKDF2 + AES-GCM），写入 `site/locked/<url_suffix>.json`。**这个文件要提交**：GitHub Actions 构建时只有它，没有明文。
+- 明文文章会被自动写进 `posts/.gitignore`，不会进入 git。若该文章之前已经提交过，需要执行一次 `git rm -r --cached "posts/<文件夹名>"`（只取消跟踪，本地文件保留）。注意：之前的提交历史里仍有旧的明文。
+- 标题、日期、分类、标签和提示是公开的；搜索索引不含加密文章的正文。
+- 修改正文或密码后重新同步即可；内容未变时 json 不会变化。取消加密：删掉 `encrypt` 一行再同步，json 和 `posts/.gitignore` 里的对应行都会自动删除。
+- 删除加密文章或修改它的 `url_suffix` 时，请手动删除 `site/locked/` 里旧的 json（CI 无法判断它是否已被删除）。
+- 加密文章不能是 PDF 文章。读者输入正确密码后，本次浏览器会话内不再询问。
+
 ### 跑团记录
 
 用 `trpg` 代码块书写，不再需要手写 HTML 和颜色表：

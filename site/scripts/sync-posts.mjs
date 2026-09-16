@@ -4,6 +4,8 @@
 //   posts/<name>.md                -> src/content/posts/<slug>/index.md
 //   posts/<name>/index.md + images -> src/content/posts/<slug>/index.md + images (max 2000px wide)
 //   PDFs referenced by <embed>     -> public/files/<slug>/<file>.pdf  (kind: pdf)
+//   posts with `encrypt: true`     -> locked/<slug>.json, encrypted (see lock-posts.mjs); the
+//                                     collection entry gets only the public front matter
 //
 // It runs as an Astro integration (see astro.config.mjs): once whenever Astro starts, and during
 // `astro dev` again on every change under ../posts, so edits there show up in the browser.
@@ -14,6 +16,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import matter from "gray-matter";
 import { PDFDocument } from "pdf-lib";
 import sharp from "sharp";
+import { lockPost, lockedSlugs, readLocked, removeLocked } from "./lock-posts.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SRC = path.resolve(root, "..", "posts");
@@ -82,6 +85,29 @@ function writeIfChanged(to, text) {
   fs.mkdirSync(path.dirname(to), { recursive: true });
   fs.writeFileSync(to, text);
   return true;
+}
+
+/** A .gitignore pattern for a name directly inside the folder that holds the .gitignore. */
+const ignorePattern = (name) => `/${name.replace(/[\\*?[\]!#]/g, "\\$&").replace(/ $/, "\\ ")}`;
+
+const IGNORE_HEADER = [
+  "# Encrypted posts, kept out of git so their plain text is never published. Maintained by",
+  "# site/scripts/sync-posts.mjs; the encrypted copies are committed in site/locked/.",
+];
+
+/**
+ * Adds encrypted posts to ../posts/.gitignore. An entry is dropped only when its post is present
+ * and no longer encrypted, so a checkout without the plain text never loses one.
+ */
+function updateGitignore(lockedSources, plainSources) {
+  const file = path.join(SRC, ".gitignore");
+  const existing = fs.existsSync(file)
+    ? fs.readFileSync(file, "utf8").split(/\r?\n/).filter((l) => l.trim() && !l.startsWith("#"))
+    : [];
+  const plain = new Set(plainSources.map(ignorePattern));
+  const lines = [...new Set([...existing.filter((l) => !plain.has(l)), ...lockedSources.map(ignorePattern)])].sort();
+  if (!lines.length && !fs.existsSync(file)) return false;
+  return writeIfChanged(file, `${[...IGNORE_HEADER, ...lines].join("\n")}\n`);
 }
 
 function fixCase(parent, name) {
@@ -154,6 +180,9 @@ export async function syncPosts({ assets = true } = {}) {
 
   const seen = new Map();
   const changed = [];
+  const lockedSources = [];
+  const plainSources = [];
+  const lockedHere = new Set();
 
   for (const entry of fs.readdirSync(SRC, { withFileTypes: true })) {
     const full = path.join(SRC, entry.name);
@@ -191,6 +220,25 @@ export async function syncPosts({ assets = true } = {}) {
     };
     if (data.cast) fm.cast = data.cast;
 
+    // The whole folder (or the .md file) is kept out of git, images included.
+    const source = assetDir ? `${entry.name}/` : entry.name;
+    if (data.encrypt) {
+      if (data.password == null || String(data.password) === "") throw new Error(`${rel}: encrypt: true needs a password`);
+      if (data.file || /<embed\b[^>]*\.pdf/i.test(content)) throw new Error(`${rel}: PDF posts can't be encrypted`);
+      lockedSources.push(source);
+      lockedHere.add(slug);
+      fm.locked = true;
+      if (data.hint) fm.hint = String(data.hint);
+      // Through JSON, so the date reads the same as in the committed copy.
+      const publicFm = JSON.parse(JSON.stringify(fm));
+      if (await lockPost({ slug, fm: publicFm, password: String(data.password), body: cleanBody(content), assetDir })) {
+        changed.push(`locked/${slug}.json`);
+      }
+      continue; // The collection entry is written from locked/ below.
+    }
+    plainSources.push(source);
+    if (removeLocked(slug)) changed.push(`removed locked/${slug}.json`);
+
     const pdf = data.file ?? content.match(/<embed\b[^>]*src=["']([^"']+\.pdf)["']/i)?.[1];
     if (pdf) {
       const pdfPath = path.join(assetDir ?? SRC, pdf);
@@ -215,6 +263,25 @@ export async function syncPosts({ assets = true } = {}) {
         if (await copy(path.join(assetDir, f), path.join(dest, f))) changed.push(path.join(entry.name, f));
       }
     }
+  }
+
+  if (updateGitignore(lockedSources, plainSources)) changed.push("posts/.gitignore");
+
+  // Encrypted posts come from their committed copies, the only source in a checkout such as CI.
+  // Their entries carry no text, just the cipher in the front matter for the page to embed.
+  for (const slug of lockedSlugs()) {
+    const { fm, cipher } = readLocked(slug);
+    if (seen.has(slug) && !lockedHere.has(slug)) {
+      throw new Error(`locked/${slug}.json: slug "${slug}" is already used by ${seen.get(slug)}`);
+    }
+    seen.set(slug, fm.source);
+    fixCase(OUT, slug);
+    const dest = path.join(OUT, slug);
+    // Images copied before the post was encrypted.
+    if (fs.existsSync(dest)) {
+      for (const f of fs.readdirSync(dest)) if (f !== "index.md") fs.rmSync(path.join(dest, f), { recursive: true, force: true });
+    }
+    if (writeIfChanged(path.join(dest, "index.md"), matter.stringify("", { ...fm, cipher }))) changed.push(fm.source);
   }
 
   // Drop posts that were removed or renamed at the source.

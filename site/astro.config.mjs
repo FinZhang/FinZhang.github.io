@@ -1,8 +1,6 @@
 import { defineConfig } from "astro/config";
 import { unified } from "@astrojs/markdown-remark";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { remarkTrpg, rehypeArticle } from "./src/lib/markdown.mjs";
+import { remarkPlugins, rehypePlugins } from "./src/lib/markdown-plugins.mjs";
 import { postsSync } from "./scripts/sync-posts.mjs";
 
 export default defineConfig({
@@ -18,8 +16,8 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
     processor: unified({
-      remarkPlugins: [remarkMath, remarkTrpg],
-      rehypePlugins: [[rehypeKatex, { strict: false, throwOnError: false }], rehypeArticle],
+      remarkPlugins,
+      rehypePlugins,
     }),
   },
 });

@@ -22,6 +22,10 @@ const posts = defineCollection({
     source: z.string(),
     /** TRPG speaker roles, see remarkTrpg in src/lib/markdown.mjs. */
     cast: z.record(z.string(), z.enum(["keeper", "dice", "player", "guest"])).optional(),
+    /** Encrypted post (front matter `encrypt: true`): no body, the page decrypts `cipher`. */
+    locked: z.boolean().default(false),
+    hint: z.string().optional(),
+    cipher: z.object({ v: z.number(), iter: z.number(), salt: z.string(), iv: z.string(), data: z.string() }).optional(),
   }),
 });
 

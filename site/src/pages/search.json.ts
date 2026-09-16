@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
     d: fmtDate(p.data.date),
     c: p.data.category,
     g: p.data.tags,
-    b: plainText(p.body ?? ""),
+    b: p.data.locked ? "" : plainText(p.body ?? ""),
   }));
   return new Response(JSON.stringify(index), { headers: { "Content-Type": "application/json; charset=utf-8" } });
 };

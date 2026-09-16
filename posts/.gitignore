@@ -1,0 +1,5 @@
+# Encrypted posts, kept out of git so their plain text is never published. Maintained by
+# site/scripts/sync-posts.mjs; the encrypted copies are committed in site/locked/.
+/提督手记 其一/
+/提督手记 其三/
+/提督手记 其二/

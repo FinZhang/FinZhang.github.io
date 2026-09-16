@@ -61,9 +61,29 @@ const pdf = data.kind === "pdf" && data.file ? { name: data.file, url: `/files/$
           <div class="post-head-rule"></div>
         </div>
 
-        <div class="prose">
-          <Content />
-        </div>
+        {
+          data.cipher ? (
+            <>
+              <section class="lock" data-lock data-slug={post.id} aria-label="加密文章">
+                <svg class="lock-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="11" x="4" y="11" rx="1.5"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                <p class="lock-kicker">Sealed · 此篇已加密</p>
+                <form class="lock-form" data-lock-form>
+                  <label class="lock-field">
+                    <input class="input" type="text" name="password" placeholder={data.hint || "输入密码 / PASSWORD"} aria-label={data.hint ? `密码（提示：${data.hint}）` : "密码"} autocomplete="off" autocapitalize="off" spellcheck="false" required />
+                  </label>
+                  <button class="btn btn-primary" type="submit">Unlock 解锁</button>
+                </form>
+                <p class="lock-error" data-lock-error aria-live="polite"></p>
+                <script is:inline type="application/json" data-lock-cipher set:html={JSON.stringify(data.cipher)} />
+              </section>
+              <div class="prose" data-lock-content hidden></div>
+            </>
+          ) : (
+            <div class="prose">
+              <Content />
+            </div>
+          )
+        }
 
         {
           pdf && (

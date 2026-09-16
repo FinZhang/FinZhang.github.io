@@ -475,6 +475,17 @@ button.pdf-action:hover { color: var(--color-accent-700); }
 .pdf-status { margin: 48px 0; font-family: var(--f-ui); font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; color: var(--color-neutral-800); font-weight: 500; }
 .pdf-note { margin: 0; font-family: var(--f-ui); font-size: 11.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-neutral-800); line-height: 1.8; font-weight: 500; }
 
+/* Encrypted posts: the password form stands in for the article until it is unlocked. */
+.lock { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 24px 0 8px; padding: 48px 24px 40px; border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider); text-align: center; }
+.lock-icon { color: var(--color-accent); }
+.lock-kicker { margin: 0; font-family: var(--f-ui); font-size: 11.5px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-neutral-800); font-weight: 500; }
+.lock-form { display: flex; align-items: stretch; gap: 10px; width: min(100%, 360px); margin-top: 6px; }
+.lock-field { flex: 1; min-width: 0; }
+.lock-field .input { font-family: var(--f-cn); }
+.lock-form .btn { flex: none; font-family: var(--f-ui); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+.lock-error { margin: 0; min-height: 1.6em; font-family: var(--f-ui); font-size: 12px; letter-spacing: 0.08em; color: var(--color-accent-700); }
+@media (max-width: 420px) { .lock-form { flex-direction: column; } }
+
 .file-table { display: flex; flex-direction: column; }
 .file-row { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; border-top: 1px solid var(--color-divider); }
 .file-row:last-child { border-bottom: 1px solid var(--color-divider); }

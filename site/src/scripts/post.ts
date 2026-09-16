@@ -1,7 +1,16 @@
 import { scrollSpy } from "./scroll-spy";
 import { bindLightbox } from "./lightbox";
+import { mountLock } from "./locked-post";
 
 function initPost() {
+  setUpPanel();
+  // An encrypted post has no article yet: the rest waits until it is unlocked.
+  const lock = document.querySelector<HTMLElement>("[data-lock]");
+  if (lock) mountLock(lock, () => (setUpPanel(), setUpArticle()));
+  else setUpArticle();
+}
+
+function setUpPanel() {
   // The contents / related / file blocks live in the floating panel, which outlives the page.
   const panel = document.querySelector<HTMLElement>("[data-aside-panel]");
   const asideButton = document.querySelector<HTMLElement>("[data-aside]");
@@ -22,7 +31,10 @@ function initPost() {
       }
     });
   }
+}
 
+function setUpArticle() {
+  const panel = document.querySelector<HTMLElement>("[data-aside-panel]");
   // The contents exist twice: in the sidebar and in the pop-out. Highlight matches in both.
   const tocs = [...document.querySelectorAll<HTMLElement>(".toc")];
   const links = tocs.flatMap((t) => [...t.querySelectorAll<HTMLAnchorElement>("a")]);
