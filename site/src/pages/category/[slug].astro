@@ -1,0 +1,98 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Masthead from "../../components/Masthead.astro";
+import CategoryGrid from "../../components/CategoryGrid.astro";
+import PostRow from "../../components/PostRow.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import AuthorCard from "../../components/AuthorCard.astro";
+import WorldCard from "../../components/WorldCard.astro";
+import YearBars from "../../components/YearBars.astro";
+import { CATEGORIES, type Category } from "../../data/site";
+import { countTags, entriesLabel, getPosts, groupByYear } from "../../lib/posts";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((cat) => ({ params: { slug: cat.slug }, props: { cat } }));
+}
+
+const { cat } = Astro.props as { cat: Category };
+const all = await getPosts();
+const posts = all.filter((p) => p.data.category === cat.cn);
+const tags = countTags(posts);
+const groups = groupByYear(posts);
+---
+
+<BaseLayout title={`${cat.cn} · ${cat.en}`}>
+  <Masthead crumbs={[{ label: `${cat.cn} · ${cat.short}`, current: true }]} />
+
+  <div class="inner-layout" data-filter-root>
+    <main class="inner-main">
+      <CategoryGrid active={cat.slug} />
+
+      <section class="page-head">
+        <div class="page-head-row">
+          <div class="page-head-text">
+            <span class="kicker">Category {cat.idx} of IV</span>
+            <h2 class="page-head-cn">{cat.cn}</h2>
+            <span class="page-head-en">{cat.en}</span>
+          </div>
+          <span class="page-head-count">{String(posts.length).padStart(2, "0")}</span>
+        </div>
+      </section>
+
+      <section class="filter">
+        <div class="filter-head">
+          <h3 class="filter-title">Filter by tag 标签</h3>
+          <span class="shown-label" data-shown>Showing {posts.length} / {posts.length}</span>
+        </div>
+        <div class="chips">
+          <button class="chip" type="button" data-filter="" aria-pressed="true">
+            <span class="chip-mark"></span><span>全部</span><span class="chip-count">{posts.length}</span>
+          </button>
+          {
+            tags.map(({ tag, count }) => (
+              <button class="chip" type="button" data-filter={tag} aria-pressed="false">
+                <span class="chip-mark"></span>
+                <span>{tag}</span>
+                <span class="chip-count">{count}</span>
+              </button>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="year-list">
+        {
+          groups.map((g) => (
+            <div class="year-group" data-group={g.year}>
+              <div class="year-label">
+                <span class="year-num">{g.year}</span>
+                <span class="year-count" data-group-count>{entriesLabel(g.posts.length)}</span>
+              </div>
+              <div>
+                {g.posts.map((p) => (
+                  <PostRow post={p} meta={p.data.tags.join(" · ")} values={p.data.tags.join("|")} />
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </section>
+    </main>
+
+    <div class="col-rule"></div>
+
+    <aside class="inner-aside">
+      <SearchBox placeholder="在本栏中搜索 / Search" scope={cat.cn} />
+      <div class="side-block">
+        <h3 class="side-title">By year 年度分布</h3>
+        <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} />
+      </div>
+      <AuthorCard compact />
+      <WorldCard short />
+    </aside>
+  </div>
+</BaseLayout>
+
+<script>
+  import "../../scripts/list-filter";
+</script>

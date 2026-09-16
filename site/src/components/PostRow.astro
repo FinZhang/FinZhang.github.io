@@ -1,0 +1,21 @@
+---
+import { fmtDate, isLatin, postUrl, type Post } from "../lib/posts";
+
+interface Props {
+  post: Post;
+  meta: string;
+  /** Values the list filter matches against, joined with "|". */
+  values?: string;
+}
+
+const { post, meta, values } = Astro.props;
+---
+
+<a class="row" href={postUrl(post)} data-values={values}>
+  <div class="row-line">
+    <span class:list={["row-title", { "is-latin": isLatin(post.data.title) }]}>{post.data.title}</span>
+    <span class="leader"></span>
+    <span class="row-date">{fmtDate(post.data.date)}</span>
+  </div>
+  <div class="row-meta">{meta}</div>
+</a>

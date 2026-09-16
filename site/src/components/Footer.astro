@@ -1,0 +1,11 @@
+---
+import { SITE } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="site-footer-rule"></div>
+  <div class="site-footer-row">
+    <span class="site-footer-copy">{SITE.author} © {new Date().getFullYear()}</span>
+    <span class="site-footer-contact">Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a></span>
+  </div>
+</footer>

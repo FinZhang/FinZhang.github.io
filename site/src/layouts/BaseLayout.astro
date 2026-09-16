@@ -1,0 +1,63 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@fontsource/cormorant-garamond/400.css";
+import "@fontsource/cormorant-garamond/500.css";
+import "@fontsource/cormorant-garamond/600.css";
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/400-italic.css";
+import "@fontsource/lora/600.css";
+import "@fontsource/spectral/400.css";
+import "@fontsource/spectral/500.css";
+import "@fontsource/spectral/600.css";
+import "@fontsource/noto-serif-sc/300.css";
+import "@fontsource/noto-serif-sc/400.css";
+import "@fontsource/noto-serif-sc/500.css";
+import "@fontsource/noto-serif-sc/600.css";
+import "katex/dist/katex.min.css";
+import "../styles/classical.css";
+import "../styles/site.css";
+import "../styles/prose.css";
+import Footer from "../components/Footer.astro";
+import FloatingControls from "../components/FloatingControls.astro";
+import { SITE } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.bio } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+---
+
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-fs="s">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        try {
+          root.dataset.theme =
+            localStorage.getItem("carillon:theme") ||
+            (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          root.dataset.fs = localStorage.getItem("carillon:fs") || "s";
+        } catch (e) {}
+      })();
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="wrap">
+      <slot />
+      <Footer />
+    </div>
+    <FloatingControls />
+  </body>
+</html>

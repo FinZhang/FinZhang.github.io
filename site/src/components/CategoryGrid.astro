@@ -1,0 +1,26 @@
+---
+import { CATEGORIES } from "../data/site";
+import { categoryUrl } from "../lib/posts";
+
+interface Props {
+  /** Slug of the current category; switches to the category-page variant. */
+  active?: string;
+  class?: string;
+}
+
+const { active, class: className } = Astro.props;
+---
+
+<nav class:list={["cat-grid", { "cat-grid--switch": active !== undefined }, className]} aria-label="分类">
+  {
+    CATEGORIES.map((c) => (
+      <a class="cat-cell" href={categoryUrl(c)} aria-current={c.slug === active ? "page" : undefined}>
+        <span class="cat-name-row">
+          {c.slug === active && <span class="cat-mark"></span>}
+          <span class="cat-cn">{c.cn}</span>
+        </span>
+        <span class="cat-en">{c.en}</span>
+      </a>
+    ))
+  }
+</nav>

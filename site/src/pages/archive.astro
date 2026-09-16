@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Masthead from "../components/Masthead.astro";
+import SearchBox from "../components/SearchBox.astro";
+import YearBars from "../components/YearBars.astro";
+import { CATEGORIES } from "../data/site";
+import { entriesLabel, fmtDate, getPosts, groupByYear, isLatin, postUrl, toRoman } from "../lib/posts";
+
+const posts = await getPosts();
+const groups = groupByYear(posts);
+const span = `${toRoman(Number(groups.at(-1)!.year))} — ${toRoman(Number(groups[0].year))}`;
+---
+
+<BaseLayout title="Timeline 时间线">
+  <Masthead crumbs={[{ label: "Timeline", current: true }, { label: span }]} />
+
+  <div class="inner-layout" data-filter-root data-bars="shown">
+    <main class="inner-main inner-main--timeline">
+      <section class="page-head">
+        <div class="page-head-row">
+          <div class="page-head-text">
+            <span class="kicker">The complete record</span>
+            <h2 class="page-head-cn">时间线</h2>
+            <span class="page-head-en">Up the river of time, all entries</span>
+          </div>
+          <span class="page-head-count" data-shown-count>{String(posts.length).padStart(2, "0")}</span>
+        </div>
+      </section>
+
+      <section class="filter">
+        <div class="filter-head">
+          <h3 class="filter-title">Filter by category 分类</h3>
+          <span class="shown-label" data-shown>Showing {posts.length} / {posts.length}</span>
+        </div>
+        <div class="chips">
+          <button class="chip" type="button" data-filter="" aria-pressed="true">
+            <span class="chip-mark"></span><span>全部</span><span class="chip-count">{posts.length}</span>
+          </button>
+          {
+            CATEGORIES.map((c) => (
+              <button class="chip" type="button" data-filter={c.cn} aria-pressed="false">
+                <span class="chip-mark"></span>
+                <span>{c.cn}</span>
+                <span class="chip-count">{posts.filter((p) => p.data.category === c.cn).length}</span>
+              </button>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="timeline">
+        {
+          groups.map((g) => (
+            <div class="tl-group" id={g.year} data-group={g.year}>
+              <div class="tl-year">
+                <span class="tl-year-num">{g.year}</span>
+                <span class="year-count" data-group-count>{entriesLabel(g.posts.length)}</span>
+              </div>
+              <div class="tl-rows">
+                {g.posts.map((p) => (
+                  <a class="tl-row" href={postUrl(p)} data-values={p.data.category}>
+                    <span class="tl-md">{fmtDate(p.data.date).slice(5)}</span>
+                    <span class="tl-main">
+                      <span class:list={["tl-title", { "is-latin": isLatin(p.data.title) }]}>{p.data.title}</span>
+                      <span class="tl-cat">
+                        {p.data.category}
+                        <span class="tl-dash"></span>
+                        <span class="tl-tag">{p.data.tags[0]}</span>
+                      </span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+        <div class="rule-1"></div>
+        <p class="tl-end">End of the timeline, starting points of the site</p>
+      </section>
+    </main>
+
+    <div class="col-rule"></div>
+
+    <aside class="inner-aside">
+      <SearchBox />
+      <div class="side-block side-sticky">
+        <h3 class="side-title">Jump to year 年份</h3>
+        <YearBars rows={groups.map((g) => ({ year: g.year, count: g.posts.length }))} links />
+      </div>
+    </aside>
+  </div>
+</BaseLayout>
+
+<script>
+  import "../scripts/list-filter";
+</script>

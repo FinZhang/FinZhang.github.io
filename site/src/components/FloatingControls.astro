@@ -1,0 +1,67 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+// Background music: every audio file in public/music, in file-name order.
+// "01 - Aubade.mp3" is listed as "Aubade".
+const musicDir = path.resolve("public/music");
+const tracks = fs.existsSync(musicDir)
+  ? fs
+      .readdirSync(musicDir)
+      .filter((f) => /\.(mp3|m4a|aac|ogg|oga|opus|flac|wav)$/i.test(f))
+      .sort((a, b) => a.localeCompare(b, "zh-CN", { numeric: true }))
+      .map((f) => ({
+        title: f.replace(/\.[^.]+$/, "").replace(/^\d+\s*[-._、]\s*/, ""),
+        src: `/music/${encodeURIComponent(f)}`,
+      }))
+  : [];
+---
+
+<div class="floating" transition:persist="floating-controls" data-tracks={JSON.stringify(tracks)}>
+  <div class="player" id="music-player" aria-label="音乐播放器">
+    <div class="player-top">
+      <div class="player-kicker-row">
+        <span class="player-kicker">Now playing</span>
+        <span class="player-time" data-time></span>
+      </div>
+      <span class="player-title" data-title>{tracks[0]?.title ?? "暂无曲目"}</span>
+    </div>
+    <input class="player-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度" data-seek disabled />
+    <div class="player-controls">
+      <button class="player-btn" type="button" aria-label="上一曲" data-prev disabled={tracks.length < 2}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
+      </button>
+      <button class="player-btn player-btn--main" type="button" aria-label="播放 / 暂停" data-toggle disabled={tracks.length === 0}>
+        <svg class="icon-play" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+        <svg class="icon-pause" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="4" height="16" rx="1"></rect><rect x="6" y="4" width="4" height="16" rx="1"></rect></svg>
+      </button>
+      <button class="player-btn" type="button" aria-label="下一曲" data-next disabled={tracks.length < 2}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="aside-panel" id="contents-panel" aria-label="目录" data-aside-panel></div>
+
+  <div class="dock">
+    <button class="btn btn-icon" type="button" aria-label="目录" title="目录" aria-controls="contents-panel" aria-expanded="false" data-aside hidden>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
+    </button>
+    <button class="btn btn-icon dock-music" type="button" aria-label="音乐播放器" title="音乐" aria-controls="music-player" aria-expanded="false" data-music>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+    </button>
+    <button class="btn btn-icon" type="button" aria-label="日间 / 夜间" title="日间 / 夜间" data-theme-toggle>
+      <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+      <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+    </button>
+    <button class="btn btn-icon dock-fs" type="button" aria-label="正文字号" title="正文字号" data-fs-toggle>Aa</button>
+    <a class="btn btn-icon" href="/" aria-label="返回主页" title="返回主页">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  import { setupFloatingControls } from "../scripts/floating-controls";
+  setupFloatingControls();
+</script>

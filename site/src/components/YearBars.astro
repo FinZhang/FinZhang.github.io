@@ -1,0 +1,25 @@
+---
+interface Props {
+  rows: { year: string; count: number }[];
+  /** Render rows as jump links to #<year>. */
+  links?: boolean;
+}
+
+const { rows, links = false } = Astro.props;
+const max = Math.max(1, ...rows.map((r) => r.count));
+const Row = links ? "a" : "div";
+---
+
+<div class="year-bars">
+  {
+    rows.map((r) => (
+      <Row class="year-bar" href={links ? `#${r.year}` : undefined} data-bar={r.year}>
+        <span class="year-bar-year">{r.year}</span>
+        <span class="year-bar-track">
+          <span class="year-bar-fill" data-bar-fill style={`width:${Math.round((r.count / max) * 100)}%`}></span>
+        </span>
+        <span class="year-bar-count" data-bar-count>{r.count}</span>
+      </Row>
+    ))
+  }
+</div>

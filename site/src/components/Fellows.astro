@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+import { FELLOWS } from "../data/site";
+---
+
+<div class="fellows">
+  <h3 class="side-title">Fellows 友情链接</h3>
+  {
+    FELLOWS.map((f) => (
+      <a class="fellow" href={f.url} target="_blank" rel="noopener">
+        <Image class="fellow-icon" src={f.icon} alt="" width={40} height={40} />
+        {f.name}
+      </a>
+    ))
+  }
+</div>

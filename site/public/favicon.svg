@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .vane { fill: #201f1d; }
+    .nib { stroke: #b68235; }
+    @media (prefers-color-scheme: dark) {
+      .vane { fill: #e8e5e1; }
+      .nib { stroke: #e1ad66; }
+    }
+  </style>
+  <defs>
+    <!-- Shaft and split barbs are cut out of the vane, so they read on any tab colour. -->
+    <mask id="cut">
+      <rect width="32" height="32" fill="#fff"/>
+      <path d="M26.8 4.2 L10.2 20.8" stroke="#000" stroke-width="1.35" stroke-linecap="round"/>
+      <path d="M19.4 3.6 L22.3 6.9 M13.6 8.2 L16.9 11.4" stroke="#000" stroke-width="1.25" stroke-linecap="round"/>
+    </mask>
+  </defs>
+  <path class="vane" mask="url(#cut)" d="M28.5 2.5 C19.5 3.2 11.2 9.2 8.6 22 C17.2 20.4 25 13.6 28.5 2.5 Z"/>
+  <path class="nib" d="M10.2 20.8 L4 28" fill="none" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

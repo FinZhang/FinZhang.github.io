@@ -1,0 +1,9 @@
+# Working material that doesn't need to be published with the blog.
+# Delete a line to include that folder in the repository.
+posts-html-backup/
+design_handoff_carillon_blog/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini

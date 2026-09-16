@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import map from "../assets/world_map.webp";
+import { SITE } from "../data/site";
+
+interface Props {
+  short?: boolean;
+}
+
+const { short = false } = Astro.props;
+const { title, subtitle, url } = SITE.worldbuilding;
+---
+
+<div class="side-block">
+  <h3 class="side-title">Worldbuilding</h3>
+  <a class:list={["world", { "world--short": short }]} href={url} target="_blank" rel="noopener">
+    <Image class="world-img" src={map} alt={`${title} world map`} width={640} />
+    <span class="world-scrim">
+      <span class="world-title">{title}</span>
+      <span class="world-sub">{subtitle}</span>
+    </span>
+  </a>
+</div>

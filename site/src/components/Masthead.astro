@@ -1,0 +1,58 @@
+---
+import { SITE } from "../data/site";
+
+interface Crumb {
+  label: string;
+  href?: string;
+  /** The page you are on. */
+  current?: boolean;
+  /** A post title: set in Noto Serif SC without uppercase. */
+  title?: boolean;
+}
+
+interface Props {
+  home?: boolean;
+  crumbs?: Crumb[];
+}
+
+const { home = false, crumbs = [] } = Astro.props;
+---
+
+<header class:list={["masthead", { "masthead--home": home }]}>
+  <div class="rule-2"></div>
+  <div class="masthead-title-row">
+    {
+      home ? (
+        <h1 class="masthead-title" transition:name="masthead">{SITE.title}</h1>
+      ) : (
+        <a class="masthead-title" href="/" transition:name="masthead">{SITE.title}</a>
+      )
+    }
+  </div>
+  <div class="masthead-meta">
+    {
+      home ? (
+        <>
+          <span>{SITE.est}</span>
+          <span class="dot" />
+          <span>{SITE.author}, The Keeper</span>
+        </>
+      ) : (
+        <>
+          <a href="/">Home</a>
+          {crumbs.map((c) => (
+            <>
+              <span class="dot" />
+              {c.href ? (
+                <a href={c.href} class:list={{ "is-title": c.title }}>{c.label}</a>
+              ) : (
+                <span class:list={{ "is-current": c.current, "is-title": c.title }}>{c.label}</span>
+              )}
+            </>
+          ))}
+        </>
+      )
+    }
+  </div>
+  <div class="rule-1"></div>
+</header>

@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import avatar from "../assets/avatar.jpg";
+import { SITE } from "../data/site";
+
+interface Props {
+  /** Category-page variant: "Keeper" heading, smaller plate, no bio. */
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+{
+  compact ? (
+    <div class="side-block">
+      <h3 class="side-title">Keeper</h3>
+      <div class="author-head author--compact">
+        <Image class="plate author-avatar" src={avatar} alt={SITE.author} width={120} height={120} />
+        <div class="author-names">
+          <span class="author-name">{SITE.author}</span>
+          <span class="author-role">{SITE.role}</span>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="author">
+      <div class="author-head">
+        <Image class="plate author-avatar" src={avatar} alt={SITE.author} width={144} height={144} />
+        <div class="author-names">
+          <span class="author-name">{SITE.author}</span>
+          <span class="author-role">{SITE.role}</span>
+        </div>
+      </div>
+      <p class="author-bio">{SITE.bio}</p>
+    </div>
+  )
+}

@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Masthead from "../components/Masthead.astro";
+import CategoryGrid from "../components/CategoryGrid.astro";
+import PostRow from "../components/PostRow.astro";
+import SearchBox from "../components/SearchBox.astro";
+import AuthorCard from "../components/AuthorCard.astro";
+import WorldCard from "../components/WorldCard.astro";
+import Fellows from "../components/Fellows.astro";
+import { getPosts } from "../lib/posts";
+import { categoryOf } from "../data/site";
+
+const posts = await getPosts();
+const latest = posts.slice(0, 5);
+---
+
+<BaseLayout>
+  <Masthead home />
+
+  <div class="home-layout">
+    <CategoryGrid class="a-nav" />
+
+    <section class="a-latest">
+      <div class="section-head">
+        <h2 class="section-title">Latest <span class="cn">最新文章</span></h2>
+        <a class="more-link" href="/archive/">All {posts.length} entries →</a>
+      </div>
+      <div class="rule-1"></div>
+      {
+        latest.map((p) => {
+          const c = categoryOf(p.data.category);
+          return <PostRow post={p} meta={`${c.cn} · ${c.en}`} />;
+        })
+      }
+    </section>
+
+    <div class="a-rule"></div>
+
+    <div class="a-side">
+      <SearchBox class="a-search" />
+      <div class="a-rest">
+        <AuthorCard />
+        <WorldCard />
+        <Fellows />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

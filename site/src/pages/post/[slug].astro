@@ -1,0 +1,210 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Masthead from "../../components/Masthead.astro";
+import { categoryOf } from "../../data/site";
+import { categoryUrl, fmtDate, formatSize, getPosts, isLatin, postUrl, toRoman, yearOf, type Post } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+const { post, newer, older } = Astro.props as { post: Post; newer?: Post; older?: Post };
+const { data } = post;
+const { Content, headings } = await render(post);
+const cat = categoryOf(data.category);
+const tag = data.tags[0];
+
+// "Also in": posts sharing the first tag, else the rest of the category.
+const sameCategory = (await getPosts()).filter((p) => p.id !== post.id && p.data.category === data.category);
+const sameTag = tag ? sameCategory.filter((p) => p.data.tags.includes(tag)) : [];
+const related = (sameTag.length ? sameTag : sameCategory).slice(0, 3);
+const relatedLabel = sameTag.length ? tag : cat.cn;
+
+// Contents: h3 is a chapter (roman-numbered), h4 its sections — see rehypeArticle.
+const depths = [...new Set(headings.map((h) => h.depth))].sort((a, b) => a - b);
+const chapterDepth = depths.includes(3) ? 3 : depths[0];
+const sectionDepth = depths.includes(4) ? 4 : depths.find((d) => d > chapterDepth);
+let chapterNo = 0;
+const toc = headings
+  .filter((h) => h.depth === chapterDepth || h.depth === sectionDepth)
+  .map((h) => ({ ...h, chapter: h.depth === chapterDepth, num: h.depth === chapterDepth ? toRoman(++chapterNo) : "" }));
+
+const pdf = data.kind === "pdf" && data.file ? { name: data.file, url: `/files/${post.id}/${encodeURIComponent(data.file)}` } : null;
+---
+
+<BaseLayout title={data.title}>
+  <Masthead crumbs={[{ label: `${cat.cn} · ${cat.short}`, href: categoryUrl(cat) }, { label: data.title, current: true, title: true }]} />
+
+  <main class="post-main">
+      <article class:list={["article", { "article--pdf": pdf }]}>
+        <div class="post-head">
+          <a class="back-link" href={categoryUrl(cat)}><span class="back-arrow">←</span> {cat.cn} · {cat.en}</a>
+          <div class="post-title-row">
+            <h1 class:list={["post-title", { "is-latin": isLatin(data.title) }]}>{data.title}</h1>
+            <div class="post-meta">
+              <time datetime={data.date.toISOString().slice(0, 10)}>{fmtDate(data.date)}</time>
+              {
+                tag && (
+                  <>
+                    <span class="post-meta-dash"></span>
+                    <span class="post-meta-kind">{tag}</span>
+                  </>
+                )
+              }
+            </div>
+          </div>
+          <div class="post-head-rule"></div>
+        </div>
+
+        <div class="prose">
+          <Content />
+        </div>
+
+        {
+          pdf && (
+            <>
+              <section class="pdf" data-pdf data-src={pdf.url} aria-label={`${data.title} PDF`}>
+                <div class="pdf-bar">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></svg>
+                  <span class="pdf-name">{pdf.name}</span>
+                  <span class="pdf-bar-rule"></span>
+                  <span class="pdf-group">
+                    <button class="pdf-btn" type="button" aria-label="上一页" data-pdf-prev disabled>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+                    </button>
+                    <input class="pdf-page-input" type="text" inputmode="numeric" value="1" aria-label="页码" data-pdf-page />
+                    <span class="pdf-count">/ <span data-pdf-count>{data.pages ?? "–"}</span></span>
+                    <button class="pdf-btn" type="button" aria-label="下一页" data-pdf-next disabled>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+                    </button>
+                  </span>
+                  <span class="pdf-group">
+                    <button class="pdf-btn" type="button" aria-label="缩小" data-pdf-zoom-out>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path></svg>
+                    </button>
+                    <span class="pdf-zoom" data-pdf-zoom>100%</span>
+                    <button class="pdf-btn" type="button" aria-label="放大" data-pdf-zoom-in>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                  </span>
+                  <a class="pdf-action" href={pdf.url} target="_blank" rel="noopener">New window ↗</a>
+                  <a class="pdf-action" href={pdf.url} download>Download ↓</a>
+                </div>
+                <div class="pdf-pages" data-pdf-pages tabindex="0">
+                  <p class="pdf-status" data-pdf-status>Loading · 载入中</p>
+                </div>
+              </section>
+              <p class="pdf-note">全文以 PDF 形式收录 — 需要检索或复制文字时，请在新窗口中打开</p>
+            </>
+          )
+        }
+
+        <div class="rule-1"></div>
+        <nav class="pager" aria-label="上一篇 / 下一篇">
+          {
+            older ? (
+              <a class="pager-link" href={postUrl(older)}>
+                <span class="pager-kicker">← Previous</span>
+                <span class="pager-title">{older.data.title}</span>
+              </a>
+            ) : (
+              <span></span>
+            )
+          }
+          <span class="pager-rule"></span>
+          {
+            newer ? (
+              <a class="pager-link pager-link--next" href={postUrl(newer)}>
+                <span class="pager-kicker">Next →</span>
+                <span class="pager-title">{newer.data.title}</span>
+              </a>
+            ) : (
+              <span></span>
+            )
+          }
+        </nav>
+      </article>
+  </main>
+
+  <!-- Moved into the floating contents panel by src/scripts/post.ts. -->
+  <div class="post-aside-source" hidden data-aside-source>
+        {
+          pdf && (
+            <div class="side-block">
+              <h3 class="side-title">The file 文件</h3>
+              <div class="file-table">
+                <div class="file-row">
+                  <span class="file-key">Format</span>
+                  <span class="file-leader"></span>
+                  <span class="file-val">PDF</span>
+                </div>
+                {data.pages && (
+                  <div class="file-row">
+                    <span class="file-key">Pages</span>
+                    <span class="file-leader"></span>
+                    <span class="file-val">{data.pages}</span>
+                  </div>
+                )}
+                {data.sizeBytes && (
+                  <div class="file-row">
+                    <span class="file-key">Size</span>
+                    <span class="file-leader"></span>
+                    <span class="file-val">{formatSize(data.sizeBytes)}</span>
+                  </div>
+                )}
+              </div>
+              <a class="btn btn-primary file-download" href={pdf.url} download>Download PDF ↓</a>
+            </div>
+          )
+        }
+
+        {
+          !pdf && toc.length > 0 && (
+            <div class="side-block">
+              <h3 class="side-title">Contents 目录</h3>
+              <nav class="toc" aria-label="目录">
+                {toc.map((h) =>
+                  h.chapter ? (
+                    <a class="toc-item toc-chapter" href={`#${h.slug}`}>
+                      <span class="toc-num">{h.num}</span>
+                      <span class="toc-chapter-label">{h.text}</span>
+                    </a>
+                  ) : (
+                    <a class="toc-item toc-section" href={`#${h.slug}`}>
+                      <span></span>
+                      <span class="toc-section-label">{h.text}</span>
+                    </a>
+                  ),
+                )}
+                <span class="toc-end"></span>
+              </nav>
+            </div>
+          )
+        }
+
+        {
+          related.length > 0 && (
+            <div class="related">
+              <h3 class="side-title">Also in {relatedLabel}</h3>
+              <div class="related-list">
+                {related.map((p) => (
+                  <a class="related-link" href={postUrl(p)}>
+                    {p.data.title}
+                    <span class="related-year">{yearOf(p.data.date)}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+  </div>
+</BaseLayout>
+
+<script>
+  import "../../scripts/post";
+</script>
