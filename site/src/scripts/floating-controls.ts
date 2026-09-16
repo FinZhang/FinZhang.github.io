@@ -6,15 +6,22 @@ const KEY_FS = "carillon:fs";
 const KEY_PLAYER = "carillon:player";
 const SIZES = ["s", "m", "l"] as const;
 const SIZE_NAMES: Record<string, string> = { s: "小", m: "中", l: "大" };
+// The volume slider at 100% plays at this fraction of the browser's full volume.
+const MAX_VOLUME = 0.7;
 
 interface Track {
   title: string;
+  artist: string;
+  album: string;
   src: string;
+  cover: string;
 }
 interface PlayerState {
   track: number;
   time: number;
   playing: boolean;
+  volume: number;
+  muted: boolean;
 }
 
 const store = {
@@ -84,9 +91,17 @@ export function setupFloatingControls() {
   const panel = q<HTMLElement>(".player");
   const musicBtn = q<HTMLButtonElement>("[data-music]");
   const titleEl = q<HTMLElement>("[data-title]");
-  const timeEl = q<HTMLElement>("[data-time]");
+  const artistEl = q<HTMLElement>("[data-artist]");
+  const albumEl = q<HTMLElement>("[data-album]");
+  const coverEl = q<HTMLImageElement>("[data-cover]");
+  const countEl = q<HTMLElement>("[data-count]");
+  const elapsedEl = q<HTMLElement>("[data-elapsed]");
+  const durationEl = q<HTMLElement>("[data-duration]");
   const seek = q<HTMLInputElement>("[data-seek]");
   const toggleBtn = q<HTMLButtonElement>("[data-toggle]");
+  const volumeBox = q<HTMLElement>(".player-volume");
+  const muteBtn = q<HTMLButtonElement>("[data-mute]");
+  const volume = q<HTMLInputElement>("[data-volume]");
 
   // Panels share the space left of the dock, so only one is open at a time.
   const pairs: { button: HTMLElement; panel: HTMLElement }[] = [];
@@ -132,9 +147,19 @@ export function setupFloatingControls() {
   let pendingTime = 0;
   let seeking = false;
 
-  const saved: Partial<PlayerState> = JSON.parse(store.get(KEY_PLAYER) ?? "{}");
+  const savedRaw = store.get(KEY_PLAYER);
+  const saved: Partial<PlayerState> = JSON.parse(savedRaw ?? "{}");
   const save = () =>
-    store.set(KEY_PLAYER, JSON.stringify({ track: current, time: audio.currentTime || pendingTime, playing: !audio.paused }));
+    store.set(
+      KEY_PLAYER,
+      JSON.stringify({
+        track: current,
+        time: audio.currentTime || pendingTime,
+        playing: !audio.paused,
+        volume: audio.volume / MAX_VOLUME,
+        muted: audio.muted,
+      } satisfies PlayerState),
+    );
 
   const render = () => {
     const d = audio.duration;
@@ -142,20 +167,88 @@ export function setupFloatingControls() {
     const ratio = Number.isFinite(d) && d > 0 ? t / d : 0;
     if (!seeking) seek.value = String(Math.round(ratio * 1000));
     seek.style.setProperty("--progress", `${(Number(seek.value) / 10).toFixed(2)}%`);
-    timeEl.textContent = Number.isFinite(d) ? `${fmtTime(t)} / ${fmtTime(d)}` : "";
+    if (!seeking) elapsedEl.textContent = fmtTime(t);
+    durationEl.textContent = Number.isFinite(d) ? fmtTime(d) : "0:00";
+  };
+
+  const setText = (node: HTMLElement, text: string) => {
+    node.textContent = text;
+    node.title = text;
+    node.hidden = !text;
   };
 
   const load = (i: number, time = 0) => {
     current = (i + tracks.length) % tracks.length;
     pendingTime = time;
-    audio.src = tracks[current].src;
-    titleEl.textContent = tracks[current].title;
-    titleEl.title = tracks[current].title;
+    const track = tracks[current];
+    audio.src = track.src;
+    setText(titleEl, track.title);
+    setText(artistEl, track.artist);
+    setText(albumEl, track.album && track.album !== track.title ? track.album : "");
+    if (track.cover) coverEl.src = track.cover;
+    coverEl.hidden = !track.cover;
+    countEl.textContent = `${current + 1} / ${tracks.length}`;
     seek.disabled = true;
     render();
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist,
+        album: track.album,
+        artwork: track.cover ? [{ src: new URL(track.cover, location.href).href, sizes: "192x192", type: "image/webp" }] : [],
+      });
+    }
   };
 
-  const play = () => audio.play().catch(() => panel.classList.remove("is-playing"));
+  // ── Volume ──
+  const renderVolume = () => {
+    const level = audio.muted ? 0 : audio.volume / MAX_VOLUME;
+    volume.value = String(Math.round(level * 100));
+    volume.style.setProperty("--progress", `${level * 100}%`);
+    volumeBox.dataset.volumeLevel = level === 0 ? "off" : level < 0.5 ? "low" : "high";
+    muteBtn.setAttribute("aria-pressed", String(audio.muted));
+    muteBtn.setAttribute("aria-label", audio.muted ? "取消静音" : "静音");
+  };
+  // Volumes are saved as the slider position (0–1), not the level sent to the browser.
+  audio.volume = Math.min(1, Math.max(0, saved.volume ?? 0.25)) * MAX_VOLUME;
+  audio.muted = saved.muted ?? false;
+  // iOS keeps volume under the hardware buttons (audio.volume is read-only), so only muting is offered there.
+  const probe = new Audio();
+  probe.volume = 0.5;
+  if (probe.volume !== 0.5) volumeBox.classList.add("is-fixed");
+  audio.addEventListener("volumechange", () => {
+    renderVolume();
+    save();
+  });
+  muteBtn.addEventListener("click", () => {
+    // Unmuting from a zero volume would still be silent; bring it back to a sensible level.
+    if (audio.muted || audio.volume === 0) {
+      if (audio.volume === 0) audio.volume = 0.5 * MAX_VOLUME;
+      audio.muted = false;
+    } else audio.muted = true;
+  });
+  volume.addEventListener("input", () => {
+    audio.volume = (Number(volume.value) / 100) * MAX_VOLUME;
+    audio.muted = audio.volume === 0;
+  });
+  renderVolume();
+
+  // The player shows pause instead of play; the dock's music button sends out rings.
+  const setPlaying = (on: boolean) => {
+    panel.classList.toggle("is-playing", on);
+    musicBtn.classList.toggle("is-playing", on);
+  };
+  const play = () => audio.play().catch(() => setPlaying(false));
+  const prev = () => {
+    // Like most players: restart the track unless we're at its very beginning.
+    if (audio.currentTime > 3) audio.currentTime = 0;
+    else load(current - 1);
+    play();
+  };
+  const next = () => {
+    load(current + 1);
+    play();
+  };
 
   audio.addEventListener("loadedmetadata", () => {
     if (pendingTime && pendingTime < audio.duration) audio.currentTime = pendingTime;
@@ -164,11 +257,11 @@ export function setupFloatingControls() {
     render();
   });
   audio.addEventListener("play", () => {
-    panel.classList.add("is-playing");
+    setPlaying(true);
     save();
   });
   audio.addEventListener("pause", () => {
-    panel.classList.remove("is-playing");
+    setPlaying(false);
     save();
   });
   audio.addEventListener("ended", () => {
@@ -185,21 +278,22 @@ export function setupFloatingControls() {
   });
 
   toggleBtn.addEventListener("click", () => (audio.paused ? play() : audio.pause()));
-  q<HTMLButtonElement>("[data-prev]").addEventListener("click", () => {
-    // Like most players: restart the track unless we're at its very beginning.
-    if (audio.currentTime > 3) audio.currentTime = 0;
-    else load(current - 1);
-    play();
-  });
-  q<HTMLButtonElement>("[data-next]").addEventListener("click", () => {
-    load(current + 1);
-    play();
-  });
+  q<HTMLButtonElement>("[data-prev]").addEventListener("click", prev);
+  q<HTMLButtonElement>("[data-next]").addEventListener("click", next);
+  // Headphone buttons, media keys and the lock screen.
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.setActionHandler("play", play);
+    navigator.mediaSession.setActionHandler("pause", () => audio.pause());
+    if (tracks.length > 1) {
+      navigator.mediaSession.setActionHandler("previoustrack", prev);
+      navigator.mediaSession.setActionHandler("nexttrack", next);
+    }
+  }
 
   seek.addEventListener("input", () => {
     seeking = true;
     seek.style.setProperty("--progress", `${Number(seek.value) / 10}%`);
-    if (Number.isFinite(audio.duration)) timeEl.textContent = `${fmtTime((Number(seek.value) / 1000) * audio.duration)} / ${fmtTime(audio.duration)}`;
+    if (Number.isFinite(audio.duration)) elapsedEl.textContent = fmtTime((Number(seek.value) / 1000) * audio.duration);
   });
   seek.addEventListener("change", () => {
     if (Number.isFinite(audio.duration)) audio.currentTime = (Number(seek.value) / 1000) * audio.duration;
@@ -210,6 +304,20 @@ export function setupFloatingControls() {
   window.addEventListener("pagehide", save);
 
   load(Math.min(Math.max(0, saved.track ?? 0), tracks.length - 1), saved.time ?? 0);
-  // Resume where the reader left off; browsers may refuse until the page has had a click.
-  if (saved.playing) play();
+  // Autoplay on a first visit (nothing saved yet), and resume where the reader left off after that.
+  // Browsers usually refuse sound before the reader has interacted with the page, so if the
+  // attempt is blocked, start on their first click, tap or key press instead.
+  if (savedRaw === null || saved.playing) {
+    audio.play().catch(() => {
+      setPlaying(false);
+      const events = ["pointerup", "touchend", "keydown"] as const;
+      const start = (e: Event) => {
+        events.forEach((type) => document.removeEventListener(type, start, true));
+        // The player's own buttons (and the Escape key) decide for themselves.
+        if (panel.contains(e.target as Node) || (e as KeyboardEvent).key === "Escape") return;
+        if (audio.paused) play();
+      };
+      events.forEach((type) => document.addEventListener(type, start, true));
+    });
+  }
 }

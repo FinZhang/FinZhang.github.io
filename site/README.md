@@ -102,6 +102,6 @@ cast:
 
 ## 其他素材
 
-- 背景音乐：把音频放进 `public/music/`（mp3 / m4a / ogg / flac…），按文件名排序成为播放列表，`01 - Aubade.mp3` 显示为 “Aubade”。
+- 背景音乐：把音频放进 `public/music/`（mp3 / m4a / ogg / flac…），按文件名排序成为播放列表。播放器读取文件自带的标题、艺术家、专辑和封面（构建时缩成 192px 的 webp）；没有标签时按文件名显示，`01 - Aubade.mp3` 显示为 “Aubade”，`歌手 - 曲名.mp3` 拆成歌手和曲名。
 - 头像、世界地图、友链图标：`src/assets/`；站点文字、分类名称、友链：`src/data/site.ts`。
 - 设计令牌：`src/styles/classical.css`（设计系统原样拷贝）；页面样式在 `site.css`，正文样式在 `prose.css`。

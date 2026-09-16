@@ -543,9 +543,7 @@ button.pdf-action:hover { color: var(--color-accent-700); }
    so it sits just outside the text, falling back to the screen margin on narrow windows.
    518px is half the content measure (1180 − 2 × 72), 44px the dock, 18px the breathing room. */
 .floating { position: fixed; right: max(22px, calc(50% - 580px)); bottom: 22px; z-index: 50; }
-.player, .aside-panel { position: absolute; right: 54px; }
-.player { top: 0; }
-.aside-panel { bottom: 0; }
+.player, .aside-panel { position: absolute; right: 54px; bottom: 0; }
 .dock {
   display: flex;
   flex-direction: column;
@@ -563,7 +561,36 @@ button.pdf-action:hover { color: var(--color-accent-700); }
 .dock .btn-icon:hover { background: var(--tint-cell); color: var(--color-accent-700); }
 .dock .btn-icon:active { background: color-mix(in srgb, var(--color-accent) 16%, transparent); }
 .dock .btn-icon:focus-visible { outline-offset: -3px; }
-.dock .dock-music { color: var(--color-accent-700); }
+/* While music plays, filled rings pulse out from behind the note and fade well inside the button's edges. */
+.dock .dock-music { position: relative; }
+.dock .dock-music svg { position: relative; z-index: 1; }
+.dock .dock-music::before,
+.dock .dock-music::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+.dock .dock-music.is-playing::before,
+.dock .dock-music.is-playing::after { animation: dock-music-ring 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite; }
+.dock .dock-music.is-playing::after { animation-delay: 1.2s; }
+@keyframes dock-music-ring {
+  0% { transform: scale(0.45); opacity: 0; }
+  15% { opacity: 0.7; }
+  100% { transform: scale(1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock .dock-music.is-playing::before { animation: none; opacity: 0.45; transform: scale(0.8); }
+  .dock .dock-music.is-playing::after { animation: none; }
+}
 .dock .dock-fs { font-family: var(--f-ui); font-size: 15px; font-weight: 500; }
 :root[data-theme="dark"] .icon-moon,
 :root:not([data-theme="dark"]) .icon-sun { display: none; }
@@ -571,9 +598,9 @@ button.pdf-action:hover { color: var(--color-accent-700); }
 .player {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  width: 212px;
-  padding: 12px 14px 11px;
+  gap: 11px;
+  width: 268px;
+  padding: 12px 14px 10px;
   background: var(--color-bg);
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-md);
@@ -584,12 +611,38 @@ button.pdf-action:hover { color: var(--color-accent-700); }
   transition: opacity 0.2s ease, transform 0.2s ease, background 0.5s ease;
 }
 .player.is-open { opacity: 1; pointer-events: auto; transform: none; }
-.player-top { display: flex; flex-direction: column; gap: 3px; }
 .player-kicker-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .player-kicker { font-family: var(--f-ui); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-neutral-800); font-weight: 500; }
-.player-time { font-family: var(--f-ui); font-size: 9px; letter-spacing: 0.1em; color: var(--color-neutral-700); font-feature-settings: "tnum"; font-weight: 500; }
-.player-title { font-family: var(--f-cn); font-size: 12.5px; color: var(--color-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.player-seek {
+.player-count, .player-times { font-family: var(--f-ui); font-size: 9px; letter-spacing: 0.1em; color: var(--color-neutral-700); font-feature-settings: "tnum"; font-weight: 500; }
+
+.player-head { display: flex; align-items: center; gap: 12px; }
+.player-cover {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  border-radius: calc(var(--radius-md) * 0.75);
+  background: var(--tint-cell);
+  color: var(--color-accent-700);
+  box-shadow: inset 0 0 0 1px var(--color-divider);
+}
+.player-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.player-cover img[hidden] { display: none; }
+/* A faint inner line keeps pale covers from bleeding into the panel. */
+.player-cover::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text) 10%, transparent); pointer-events: none; }
+.player-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.player-meta > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-meta > [hidden] { display: none; }
+.player-title { font-family: var(--f-cn); font-size: 13.5px; line-height: 1.35; color: var(--color-text); }
+.player-artist { font-family: var(--f-ui); font-size: 11.5px; line-height: 1.35; letter-spacing: 0.04em; color: var(--color-accent-700); font-weight: 500; }
+.player-album { font-family: var(--f-ui); font-size: 10.5px; line-height: 1.35; letter-spacing: 0.04em; color: var(--color-neutral-700); font-style: italic; }
+
+.player-progress { display: flex; flex-direction: column; gap: 3px; }
+.player-times { display: flex; justify-content: space-between; }
+.player-range {
   -webkit-appearance: none;
   appearance: none;
   display: block;
@@ -601,14 +654,17 @@ button.pdf-action:hover { color: var(--color-accent-700); }
     linear-gradient(var(--color-accent), var(--color-accent)) 0 50% / var(--progress, 0%) 1px no-repeat,
     linear-gradient(var(--color-divider), var(--color-divider)) 0 50% / 100% 1px no-repeat;
 }
-.player-seek:disabled { cursor: default; }
-.player-seek::-webkit-slider-thumb { -webkit-appearance: none; width: 5px; height: 5px; border: 0; border-radius: 0; background: var(--color-accent); }
-.player-seek::-moz-range-thumb { width: 5px; height: 5px; border: 0; border-radius: 0; background: var(--color-accent); }
-.player-seek::-moz-range-track { background: transparent; }
-.player-seek:disabled::-webkit-slider-thumb { background: transparent; }
-.player-seek:disabled::-moz-range-thumb { background: transparent; }
-.player-controls { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
-.player-btn { flex: 1; display: flex; align-items: center; justify-content: center; height: 30px; border: 0; background: transparent; cursor: pointer; color: var(--color-neutral-800); transition: color 0.2s ease, border-color 0.2s ease; }
+.player-range:disabled { cursor: default; }
+.player-range::-webkit-slider-thumb { -webkit-appearance: none; width: 5px; height: 5px; border: 0; border-radius: 0; background: var(--color-accent); transition: transform 0.15s ease; }
+.player-range::-moz-range-thumb { width: 5px; height: 5px; border: 0; border-radius: 0; background: var(--color-accent); }
+.player-range::-moz-range-track { background: transparent; }
+.player-range:not(:disabled):hover::-webkit-slider-thumb { transform: scale(1.4); }
+.player-range:disabled::-webkit-slider-thumb { background: transparent; }
+.player-range:disabled::-moz-range-thumb { background: transparent; }
+
+.player-controls { display: flex; align-items: center; gap: 10px; padding-top: 9px; border-top: 1px solid var(--color-divider); }
+.player-transport { display: flex; align-items: center; gap: 4px; width: 118px; flex: none; }
+.player-btn { flex: 1; display: flex; align-items: center; justify-content: center; height: 30px; padding: 0; border: 0; border-radius: calc(var(--radius-md) * 0.75); background: transparent; cursor: pointer; color: var(--color-neutral-800); transition: color 0.2s ease, border-color 0.2s ease; }
 .player-btn:hover { color: var(--color-accent-700); }
 .player-btn--main { border: 1px solid var(--color-divider); color: var(--color-accent-700); }
 .player-btn--main:hover { border-color: var(--color-accent); }
@@ -616,6 +672,16 @@ button.pdf-action:hover { color: var(--color-accent-700); }
 .player .icon-pause { display: none; }
 .player.is-playing .icon-pause { display: block; }
 .player.is-playing .icon-play { display: none; }
+
+.player-volume { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; padding-left: 10px; border-left: 1px solid var(--color-divider); }
+.player-btn--vol { flex: none; width: 24px; }
+.player-vol { flex: 1; min-width: 0; }
+.player-volume.is-fixed .player-vol { display: none; }
+.player-volume :is(.icon-vol-high, .icon-vol-low, .icon-vol-off) { display: none; }
+.player-volume[data-volume-level="high"] .icon-vol-high,
+.player-volume[data-volume-level="low"] .icon-vol-low,
+.player-volume[data-volume-level="off"] .icon-vol-off { display: block; }
+.player-volume[data-volume-level="off"] .player-btn--vol { color: var(--color-neutral-600); }
 
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
