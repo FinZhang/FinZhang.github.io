@@ -258,7 +258,9 @@ export async function syncPosts({ assets = true } = {}) {
 
     if (assetDir) {
       for (const f of fs.readdirSync(assetDir)) {
-        if (f === "index.md" || f.toLowerCase().endsWith(".pdf")) continue;
+        // Case-insensitive: on Windows "Index.md" is the same file as index.md, and copying it
+        // here would overwrite the normalised index.md with the raw source.
+        if (canon(f) === "index.md" || canon(f).endsWith(".pdf")) continue;
         const copy = RESIZABLE.has(path.extname(f).toLowerCase()) ? copyImageIfChanged : copyIfChanged;
         if (await copy(path.join(assetDir, f), path.join(dest, f))) changed.push(path.join(entry.name, f));
       }
