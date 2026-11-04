@@ -365,6 +365,8 @@ a.masthead-title:hover { color: var(--color-accent-700); }
 .fellow { display: flex; align-items: center; gap: 10px; color: var(--color-text); font-size: 13px; }
 .fellow:hover { color: var(--color-accent-700); }
 .fellow-icon { width: 20px; height: 20px; flex: none; object-fit: cover; filter: saturate(0.6); background: var(--color-surface); outline: 1px solid var(--color-divider); }
+.fellow-rss { justify-content: flex-end; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--color-divider); }
+.fellow-rss .fellow-icon { color: var(--color-accent-700); filter: none; }
 
 .year-bars { display: flex; flex-direction: column; }
 .year-bar { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--color-divider); color: var(--color-text); }
